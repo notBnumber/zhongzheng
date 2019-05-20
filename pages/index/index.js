@@ -79,8 +79,7 @@ Page({
         price: "20.06 万元",
         img: "https://images.unsplash.com/photo-1551446591-142875a901a1?w=640"
       }
-    ],
-    int:1
+    ]
   },
   //事件处理函数
   bindViewTap: function() {
