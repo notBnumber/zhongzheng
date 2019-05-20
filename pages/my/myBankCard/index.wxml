@@ -1,0 +1,24 @@
+<view class="container">
+  <!-- 银行卡列表 -->
+  <view class="bankList">
+    <view class="items" wx:for="{{10}}">
+      <van-swipe-cell right-width="{{ 70 }}" async-close bind:close="onClose">
+        <view class="box">
+          <image src="../../../images/kh01.png"></image>
+          <view class="bank">
+            <view>开户银行：邮政银行（增城荔城支行)</view>
+            <view>银行账号：**** **** **** **** **** 5613</view>
+            <view>开户人：邹莉莉</view>
+          </view>
+        </view>
+        <view slot="right" class="right">
+          <image src="../../../images/sc12.png" slot="right"></image>
+        </view>
+      </van-swipe-cell>
+    </view>
+  </view>
+  <!-- 添加银行卡 -->
+  <view class="addBank">
+    <view bindtap="pageTo" data-url="/pages/my/addBankCard/index">添加银行卡</view>
+  </view>
+</view>

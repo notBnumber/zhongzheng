@@ -1,0 +1,40 @@
+.container{
+  .box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .left{
+      width: 214rpx;
+      .row{
+        width: 130rpx;
+        height: 120rpx;
+        line-height: 120rpx;
+        text-align-last: justify;
+        font-size:30rpx;
+        font-family:PingFang-SC-Medium;
+        font-weight:500;
+        color:#626262;
+        margin:0 auto;
+        position: relative;
+        &:after{
+          content: ':';
+          position: absolute;
+          right: -10rpx;
+        }
+      }
+    }
+    .right{
+      flex:1;
+      .row{
+        height: 120rpx;
+        margin-bottom: 1px solid #E4E4E4;
+        display: flex;
+        align-items: center;
+        font-size:30rpx;
+        font-family:PingFang-SC-Regular;
+        font-weight:400;
+        color:#000;
+      }
+    }
+  }
+}

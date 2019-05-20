@@ -1,0 +1,42 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0; */
+  box-sizing: border-box;
+} 
+.df {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+view {
+  box-sizing: border-box;
+}
+.swiper {
+  width: 100%;
+  height: 390rpx;
+
+}
+
+.swiper swiper {
+  width: 100%;
+  height: 100%;
+}
+
+swiper-item {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+}
+.mb {
+  margin-bottom: 24rpx;
+}

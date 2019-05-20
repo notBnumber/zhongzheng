@@ -1,0 +1,96 @@
+<!-- index.wxml -->
+<view class="container">
+  <!-- <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view> -->
+  <view class="search " hover-class="none" hover-stop-propagation="false">
+    <view class="searchLeft" hover-class="none" hover-stop-propagation="false">
+      <image class="" src="../../images/dw01.png"></image>
+      <view class="" hover-class="none" hover-stop-propagation="false">
+        广州
+      </view>
+    </view>
+    <!-- <input type="text"> -->
+    <view class="inp" hover-class="none" hover-stop-propagation="false">
+      <image class="" src="../../images/ss01.png"></image>
+      <input class="" value="" type="text" placeholder="请输入楼盘" placeholder-class="input-placeholder"></input>
+    </view>
+  </view>
+  <!-- 轮播图 -->
+  <view class="swiper" hover-class="none" hover-stop-propagation="false">
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+          <view class="ind df" hover-class="none" hover-stop-propagation="false">
+            {{imgUrls.length}}/{{index+1}}
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!-- 推客 推盘 -->
+  <view class="oneTab" hover-class="none" hover-stop-propagation="false">
+    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false">
+      <image class="oneTabItemImg" src="../../images/tk01.png" mode='widthFix'></image>
+    </view>
+    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false">
+      <image class="oneTabItemImg" src="../../images/tp01.png" mode='widthFix'></image>
+    </view>
+  </view>
+  <!-- tab栏 -->
+  <view class="twoTab" hover-class="none" hover-stop-propagation="false">
+    <view class="twoTabItem" hover-class="none" hover-stop-propagation="false" wx:for="{{twoTabList}}" wx:key="index" bindtap='toHouseDetail' data-index='{{index}}'>
+      <image class="twoTabItemImg" src="{{item.img}}" mode='widthFix'></image>
+      <view class="twoTabItemName" hover-class="none" hover-stop-propagation="false">
+        {{item.name}}
+      </view>
+    </view>
+  </view>
+  <!-- 文字轮播 -->
+  <view class="word" hover-class="none" hover-stop-propagation="false">
+    <view class="wordLeft df" hover-class="none" hover-stop-propagation="false">购房</view>
+    <view class="wordRight" hover-class="none" hover-stop-propagation="false">
+      王先生购买保利中心复式100m²一套，总价100W
+    </view>
+  </view>
+  <!-- 分割线 -->
+  <view class="break" hover-class="none" hover-stop-propagation="false"></view>
+  <!-- 热门推荐 -->
+  <view class="hot" hover-class="none" hover-stop-propagation="false">
+    <view class="hotTitle df" hover-class="none" hover-stop-propagation="false">
+      <image class="hotTitleImg" src="../../images/hr01.png" mode='widthFix'></image>
+      <view class="hr" hover-class="none" hover-stop-propagation="false">热门推荐</view>
+    </view>
+    <view class="hotTab" hover-class="none" hover-stop-propagation="false">
+      <view class="hotTabItem  df  {{tabIndex==index?'active':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{hotTabList}}" wx:key="{{index}}" data-index="{{index}}" bindtap='tabCheck'>
+        {{item.name}}
+      </view>
+    </view>
+    <view class="hotContent" hover-class="none" hover-stop-propagation="false">
+      <view class="hotContentItem" hover-class="none" hover-stop-propagation="false" wx:for="{{hotList}}" wx:key="{{index}}" bindtap='toDetail' data-id='{{item.name}}'>
+        <image class="hotContentItemImg" src="{{item.img}}"></image>
+        <view class="name" hover-class="none" hover-stop-propagation="false">{{item.name}}</view>
+        <view class="address" hover-class="none" hover-stop-propagation="false">
+          {{item.address}}
+        </view>
+        <view class="biaoqianList" hover-class="none" hover-stop-propagation="false">
+          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.list}}" wx:for-item="items">
+            {{items.name}}
+          </view>
+        </view>
+
+        <view class="price" hover-class="none" hover-stop-propagation="false">{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 没有 -->
+  <view class="nonono" hover-class="none" hover-stop-propagation="false">没有更多啦</view>
+</view>

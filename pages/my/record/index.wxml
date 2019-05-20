@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="recordList" wx:if="{{recordList.length > 0}}">
+    <view class="items" wx:for="{{recordList}}">
+      <view class="left">
+        <view>建设银行（6200********0000）</view>
+        <view>2018-09-18</view>
+      </view>
+      <view class="right {{index == 1 ? 'red' : index == 2 ? 'green': '' }}" >
+        <view>¥30</view>
+        <view>未到账</view>
+      </view>
+    </view>
+  </view>
+  <view class="nothing" wx:if="{{recordList.length  == 0}}">
+    <view class="box">
+      <image src="../../../images/xb01.png"></image>
+      暂无提现记录
+    </view>
+  </view>
+</view>

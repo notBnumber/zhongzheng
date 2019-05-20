@@ -1,0 +1,72 @@
+<!-- pages/detail/detail.wxml -->
+<view class="container" hover-class="none" hover-stop-propagation="false">
+    <view class="swiper" hover-class="none" hover-stop-propagation="false">
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+          <view class="ind df" hover-class="none" hover-stop-propagation="false">
+            {{imgUrls.length}}/{{index}}
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="info" hover-class="none" hover-stop-propagation="false">
+    <view class="Collection" hover-class="none" hover-stop-propagation="false" bindtap='shoucang'>
+      <image class="" src="../../images/sc02.png" wx:if="{{isshoucang == false}}"></image>
+      <image class="" src="../../images/sc01.png" wx:elif="{{isshoucang == true}}"></image>
+      <view class="" hover-class="none" hover-stop-propagation="false">收藏</view>
+    </view>
+    <view class="name" hover-class="none" hover-stop-propagation="false">{{info.name}}</view>
+    <view class="title" hover-class="none" hover-stop-propagation="false">{{info.title}}</view>
+    <view class="number" hover-class="none" hover-stop-propagation="false">{{info.number}}</view>
+    <view class="biaoqianList" hover-class="none" hover-stop-propagation="false">
+      <view class="biaoqian df {{item.state == 1?'state1':''}}  {{item.state == 2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{info.list}}">
+        {{item.name}}
+      </view>
+    </view>
+    <view class="Commission" hover-class="none" hover-stop-propagation="false">
+      <view class="p1">可获佣金：</view>
+      <view class="p2">{{info.Commission}}</view>
+    </view>
+    <view class="money" hover-class="none" hover-stop-propagation="false">{{info.money}}</view>
+  </view>
+  <view class="address" hover-class="none" hover-stop-propagation="false" bindtap='getAddress'>
+    <image class="dw" src="../../images/dw02.png"></image>
+    <view class="" hover-class="none" hover-stop-propagation="false">广州市海珠区琶洲</view>
+    <image class="zy" src="../../images/zy03.png"></image>
+  </view>
+  <view class="detail" hover-class="none" hover-stop-propagation="false">
+    <view class="item" hover-class="none" hover-stop-propagation="false">面积：{{info.mianji}}</view>
+    <view class="item" hover-class="none" hover-stop-propagation="false">用途：{{info.yongtu}}</view>
+    <view class="item" hover-class="none" hover-stop-propagation="false">特色：{{info.tese}}</view>
+    <view class="word" hover-class="none" hover-stop-propagation="false">富文本</view>
+  </view>
+  <view class="comment" hover-class="none" hover-stop-propagation="false">
+    <view class="title" hover-class="none" hover-stop-propagation="false">
+      <image class="" src="../../images/xx04.png"></image>
+      <view class="" hover-class="none" hover-stop-propagation="false">房源点评</view>
+    </view>
+    <view class="content" hover-class="none" hover-stop-propagation="false">
+      <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{5}}">
+        <view class="itemTop" hover-class="none" hover-stop-propagation="false">
+          <view class="itemTopLeft" hover-class="none" hover-stop-propagation="false">
+            <image class="avatar" src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=640"></image>
+          </view>
+          <view class="itemTopRight" hover-class="none" hover-stop-propagation="false">
+            <view class="tt" hover-class="none" hover-stop-propagation="false">188****1564</view>
+            <view class="tb" hover-class="none" hover-stop-propagation="false">12-17</view>
+          </view>
+        </view>
+        <view class="itemBottom" hover-class="none" hover-stop-propagation="false">
+          评论评论评论评论评论评论评论评论评论评论 评论评论评论评论评论评论评论评论评论
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="send">
+    <input  type="text"  placeholder="请输入您对房源的评价"  placeholder-class="input-placeholder" disabled="{{false}}" maxlength="140"></input>
+    <view class="btn df" >在线咨询</view>
+  </view>
+</view>

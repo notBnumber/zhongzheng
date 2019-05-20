@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="box">
+    <view class="left">
+      <view class="row">姓名</view>
+      <view class="row">银行卡号</view>
+      <view class="row">开户银行</view>
+    </view>
+    <view class="right">
+      <view class="row">
+        <input type="text" placeholder="自动获取实名认证姓名" disabled/>
+      </view>
+      <view class="row">
+        <input type="text" placeholder="请输入银行卡号"/>
+      </view>
+      <view class="row">
+        <input type="text" placeholder="请输入开户银行"/>
+      </view>
+    </view>
+  </view>
+</view>

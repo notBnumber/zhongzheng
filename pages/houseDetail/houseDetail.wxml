@@ -1,0 +1,62 @@
+<!-- pages/houseDetail/houseDetail.wxml -->
+<view class="container {{show == true?'container-ban':''}}" hover-class="none" hover-stop-propagation="false">
+  <van-popup show="{{ show }}" bind:close="onClose" position="bottom">
+    <view class="box" hover-class="none" hover-stop-propagation="false">
+      <view class="title" hover-class="none" hover-stop-propagation="false">
+        <view class="dian" hover-class="none" hover-stop-propagation="false"></view>
+        <view class="name" hover-class="none" hover-stop-propagation="false">{{openList[0].name}}</view>
+        <view class="dian" hover-class="none" hover-stop-propagation="false"></view>
+      </view>
+      <view class="content" hover-class="none" hover-stop-propagation="false">
+        <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{openList[0].list}}" bindtap='check' wx:key='{{index}}' data-index='{{index}}'>
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </van-popup>
+  <view class="swiper" hover-class="none" hover-stop-propagation="false">
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}">
+      <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+          <view class="ind df" hover-class="none" hover-stop-propagation="false">
+            {{imgUrls.length}}/{{index+1}}
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="tab" hover-class="none" hover-stop-propagation="false">
+    <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{tabList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='filter'>
+      <view class="itemP" hover-class="none" hover-stop-propagation="false">
+        <view class="itemName" hover-class="none" hover-stop-propagation="false">
+          {{item.name}}
+        </view>
+        <image src="../../images/sj.png" />
+      </view>
+    </view>
+  </view>
+  <view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="hotContent" hover-class="none" hover-stop-propagation="false">
+      <view class="hotContentItem" hover-class="none" hover-stop-propagation="false" wx:for="{{hotList}}" wx:key="{{index}}" bindtap='toDetail' data-id='{{item.name}}'>
+        <image class="hotContentItemImg" src="{{item.img}}"></image>
+        <view class="name" hover-class="none" hover-stop-propagation="false">{{item.name}}</view>
+        <view class="address" hover-class="none" hover-stop-propagation="false">
+          {{item.address}}
+        </view>
+        <view class="biaoqianList" hover-class="none" hover-stop-propagation="false">
+          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.list}}" wx:for-item="items">
+            {{items.name}}
+          </view>
+        </view>
+        <view class="yongjin" hover-class="none" hover-stop-propagation="false">
+          <view class="yongjinLeft" hover-class="none" hover-stop-propagation="false">可获佣金：</view>
+          <view class="yongjinRight" hover-class="none" hover-stop-propagation="false">
+            {{item.yongjin}}
+          </view>
+        </view>
+        <view class="price" hover-class="none" hover-stop-propagation="false">{{item.price}}</view>
+      </view>
+    </view>
+  </view>
+</view>
