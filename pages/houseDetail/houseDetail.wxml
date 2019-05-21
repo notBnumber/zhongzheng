@@ -4,27 +4,99 @@
     <view class="box" hover-class="none" hover-stop-propagation="false">
       <view class="title" hover-class="none" hover-stop-propagation="false">
         <view class="dian" hover-class="none" hover-stop-propagation="false"></view>
-        <view class="name" hover-class="none" hover-stop-propagation="false">{{openList[0].name}}</view>
+        <view class="name" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 1 || currentState == 2 || currentState == 3}}">
+          {{openList[0].name}}
+        </view>
+        <view class="name" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 0 || currentState == 4}}">
+          {{specialName}}
+        </view>
         <view class="dian" hover-class="none" hover-stop-propagation="false"></view>
       </view>
-      <view class="content" hover-class="none" hover-stop-propagation="false">
+      <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 1 || currentState == 2 || currentState == 3}}">
         <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{openList[0].list}}" bindtap='check' wx:key='{{index}}' data-index='{{index}}'>
           {{item.name}}
+        </view>
+      </view>
+      <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 0}}">
+        <view class="contentTop" hover-class="none" hover-stop-propagation="false">
+          <scroll-view class="" scroll-y style="height: 803rpx;width:200rpx">
+            <view class="left" hover-class="none" hover-stop-propagation="false">
+              <view class="leftItem" hover-class="none" hover-stop-propagation="false" wx:for="{{specialList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkSpecial'>
+                <view class="{{specialIndex == index ?'active' :''}} items" hover-class="none" hover-stop-propagation="false">
+                  {{item.name}}
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+          <view class="right" hover-class="none" hover-stop-propagation="false">
+            <view class="rightItem df {{item.state == true ?'active' :''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{specialRight}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkRight'>
+              {{item.name}}
+              <view class="{{item.state == true ?'yes' :''}} df" hover-class="none" hover-stop-propagation="false" wx:if="{{item.state == true}}">
+                √
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="contentBottom" hover-class="none" hover-stop-propagation="false">
+          <view class="left" hover-class="none" hover-stop-propagation="false">
+            <view class='as df' bindtap='reset'>重置</view>
+          </view>
+          <view class="right" hover-class="none" hover-stop-propagation="false">
+            <view class='btn df' bindtap='btn'>确定</view>
+          </view>
+        </view>
+      </view>
+      <!-- 意向区域 -->
+      <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 4}}">
+        <view class="contentTop" hover-class="none" hover-stop-propagation="false">
+          <scroll-view class="" scroll-y style="height: 803rpx;width:200rpx">
+            <view class="left" hover-class="none" hover-stop-propagation="false">
+              <view class="leftItem" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkQuyu'>
+                <view class="{{quyuIndex == index ?'active' :''}} items" hover-class="none" hover-stop-propagation="false">
+                  {{item.name}}
+                </view>
+              </view>
+            </view>
+          </scroll-view>
+
+          <view class="rightTop" hover-class="none" hover-stop-propagation="false">
+                <view class="right" hover-class="none" hover-stop-propagation="false">
+            <scroll-view class="" scroll-y style="height: 575rpx;flex:1;display: flex;justify-content: space-between;flex-wrap: wrap;" >
+              <view style='display: flex;justify-content: space-between;flex-wrap: wrap;' hover-class="none" hover-stop-propagation="false" >
+                              <view class="rightItem df {{item.state == true ?'active' :''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuRight}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkQuyuRight'>
+                {{item.name}}
+                <view class="{{item.state == true ?'yes' :''}} df" hover-class="none" hover-stop-propagation="false" wx:if="{{item.state == true}}">
+                  √
+                </view>
+              </view>
+              </view>
+            </scroll-view>
+
+    </view>
+          </view>
+        </view>
+        <view class="contentBottom" hover-class="none" hover-stop-propagation="false">
+          <view class="left" hover-class="none" hover-stop-propagation="false">
+            <view class='as df' bindtap='resetQuyu'>重置</view>
+          </view>
+          <view class="right" hover-class="none" hover-stop-propagation="false">
+            <view class='btn df' bindtap='btnQuyu'>确定</view>
+          </view>
         </view>
       </view>
     </view>
   </van-popup>
   <view class="swiper" hover-class="none" hover-stop-propagation="false">
-    <swiper autoplay="{{autoplay}}" interval="{{interval}}">
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}" bindchange='swiperChange'>
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
           <image src="{{item}}" class="slide-image" />
-          <view class="ind df" hover-class="none" hover-stop-propagation="false">
-            {{imgUrls.length}}/{{index+1}}
-          </view>
         </swiper-item>
       </block>
     </swiper>
+    <view class="ind df" hover-class="none" hover-stop-propagation="false">
+      {{imgUrls.length}}/{{current+1}}
+    </view>
   </view>
   <view class="tab" hover-class="none" hover-stop-propagation="false">
     <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{tabList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='filter'>

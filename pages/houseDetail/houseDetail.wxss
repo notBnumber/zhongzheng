@@ -186,3 +186,114 @@ van-popup .van-popup {
   font-weight: 400;
   color: #333333;
 }
+.box .content .contentTop {
+  border-top: 1rpx solid #E4E4E4;
+  width: 100%;
+  height: 803rpx;
+  display: flex;
+}
+.box .content .contentTop .left {
+  width: 200rpx;
+}
+.box .content .contentTop .left .items {
+  width: 100%;
+  padding-left: 40rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #333333;
+}
+.box .content .contentTop .left .leftItem {
+  padding-top: 25rpx;
+  padding-bottom: 25rpx;
+  padding-left: 0;
+}
+.box .content .contentTop .left .leftItem .active {
+  border-right: 4rpx solid #38C6A0;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: #38c6a0;
+}
+.box .content .contentTop .rightTop {
+  flex: 1;
+  height: 650rpx;
+  border-bottom: 1rpx solid #E4E4E4;
+  padding: 20rpx 0;
+}
+.box .content .contentTop .right {
+  flex: 1;
+  overflow: hidden;
+  padding: 20rpx 40rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-left: 1rpx solid #E4E4E4;
+}
+.box .content .contentTop .right .rightItem {
+  width: 200rpx;
+  height: 50rpx;
+  border: 1rpx solid #999999;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #999999;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.box .content .contentTop .right .rightItem .yes {
+  font-size: 15rpx;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 48rpx;
+  height: 20rpx;
+  background: #38c6a0;
+  border-radius: 10rpx 0rpx 10rpx 0rpx;
+}
+.box .content .contentTop .right .active {
+  color: #38c6a0;
+  border: 1rpx solid #38c6a0;
+}
+.box .content .contentBottom {
+  width: 100%;
+  height: 134rpx;
+  border-top: 1rpx solid #E4E4E4;
+  display: flex;
+  align-items: center;
+}
+.box .content .contentBottom .left {
+  width: 200rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.box .content .contentBottom .left .as {
+  width: 170rpx;
+  height: 84rpx;
+  background: #6de0c3;
+  border-radius: 42rpx 0rpx 0rpx 42rpx;
+  overflow: hidden;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: #ffffff;
+}
+.box .content .contentBottom .right {
+  margin-left: 10rpx;
+  flex: 1;
+}
+.box .content .contentBottom .right .btn {
+  width: 521rpx;
+  height: 84rpx;
+  background: linear-gradient(-90deg, #38c6a0 0%, #6de0c3 100%);
+  border-radius: 0rpx 42rpx 42rpx 0rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Bold;
+  font-weight: bold;
+  color: #ffffff;
+}
