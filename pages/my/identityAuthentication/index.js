@@ -1,24 +1,13 @@
-// pages/my/addBankCard/index.js
+// pages/my/identityAuthentication/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bankName:''
+
   },
-  submit(){
-    wx.showToast({
-      title: '添加成功',
-      icon: 'success',
-      duration: 1500
-    })
-    setTimeout(()=>{
-      wx.navigateBack({
-        delta: 1
-      })
-    },1500)
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */

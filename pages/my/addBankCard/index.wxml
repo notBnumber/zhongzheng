@@ -7,14 +7,15 @@
     </view>
     <view class="right">
       <view class="row">
-        <input type="text" placeholder="自动获取实名认证姓名" disabled/>
+        <input type="text" placeholder="自动获取实名认证姓名" disabled value="{{bankName}}"/>
       </view>
       <view class="row">
-        <input type="text" placeholder="请输入银行卡号"/>
+        <input type="number" placeholder="请输入银行卡号"/>
       </view>
       <view class="row">
         <input type="text" placeholder="请输入开户银行"/>
       </view>
     </view>
   </view>
+  <view class="button" bindtap="submit">添加</view>
 </view>

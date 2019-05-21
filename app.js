@@ -56,5 +56,8 @@ App({
     userInfo: null,
     height: 0,
 	info:"全局变量"
-  }
+  },
+  fun() {
+
+  },
 })

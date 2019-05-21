@@ -14,16 +14,19 @@
     "pages/my/commission/index",
     "pages/my/myBankCard/index",
     "pages/my/addBankCard/index",
-	  "pages/toLogin/toLogin"
+	  "pages/toLogin/toLogin",
+    "pages/my/identityAuthentication/index",
+    "pages/my/realNameAuthentication/index"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-    
+
   },
-  
+
   "tabBar": {
     "color": "",
     "selectedColor": "",
@@ -54,10 +57,10 @@
   "permission": {
 
     "scope.userLocation": {
-    
+
     "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    
+
     }
-    
+
     }
 }

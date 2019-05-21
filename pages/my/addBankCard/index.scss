@@ -25,16 +25,36 @@
     }
     .right{
       flex:1;
+      margin-right: 40rpx;
       .row{
         height: 120rpx;
-        margin-bottom: 1px solid #E4E4E4;
+        border-bottom: 1px solid #E4E4E4;
         display: flex;
         align-items: center;
         font-size:30rpx;
         font-family:PingFang-SC-Regular;
         font-weight:400;
         color:#000;
+        input{
+          width: 100%;
+          padding-right: 20rpx;
+        }
       }
     }
+  }
+  .button{
+    position: absolute;
+    bottom: 50rpx;
+    left: calc(50% - 330rpx);
+    width: 626rpx;
+    height: 84rpx;
+    line-height: 84rpx;
+    background:linear-gradient(-90deg,rgba(56,198,160,1) 0%,rgba(109,224,195,1) 100%);
+    border-radius: 42rpx;
+    text-align: center;
+    font-size:32rpx;
+    font-family:PingFang-SC-Medium;
+    font-weight:500;
+    color:#FFFFFF;
   }
 }
