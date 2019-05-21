@@ -38,8 +38,7 @@
 		},
 		"miniprogram": {
 			"current": 4,
-			"list": [
-				{
+			"list": [{
 					"id": -1,
 					"name": "w d ",
 					"pathName": "pages/my/index/index",
