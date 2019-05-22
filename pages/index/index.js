@@ -82,6 +82,12 @@ Page({
       }
     ]
   },
+  // 跳转推客
+  tk() {
+    wx.navigateTo({
+      url: "../tuike/index"
+    });
+  },
   // 滑动触发事件
   swiperChange(e) {
     // console.log(e.detail.current);

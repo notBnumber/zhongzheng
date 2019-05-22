@@ -4,6 +4,8 @@
     "pages/detail/detail",
     "pages/houseDetail/houseDetail",
     "pages/panInfo/panInfo",
+    "pages/tuike/index",
+    "pages/friends/friends",
     "pages/logs/logs",
     "pages/my/index/index",
     "pages/my/myinfo/index",
@@ -23,14 +25,12 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
-
-  },
+    "navigationBarTextStyle": "black"  },
 
   "tabBar": {
-    "color": "",
-    "selectedColor": "",
-    "backgroundColor": "",
+    "color": "#666",
+    "selectedColor": "#2DC59C",
+    "backgroundColor": "#fff",
     "position": "bottom",
     "borderStyle": "black",
     "list": [

@@ -131,110 +131,33 @@ Page({
 quyuIndex:0,
 quyuIndexs:0,
 quyuRight:[],
+// 选中的
+quyuCheck:[
+
+],
     quyuList:[
       {
         name:'其他',
         list:[
           {
             name:'不限',
-            state:false
+            state:false,
+            id:1
           },
           {
             name:'不限',
-            state:false
+            state:false,
+            id:2
           },
           {
             name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
-          },
-          {
-            name:'不限',
-            state:false
+            state:false,
+            id:3
           },
           {
             name:'教育房产',
-            state:false
+            state:false,
+            id:4
           }
         ]
       },
@@ -243,11 +166,13 @@ quyuRight:[],
         list:[
           {
             name:'别墅',
-            state:false
+            state:false,
+            id:5
           },
           {
             name:'特价房',
-            state:false
+            state:false,
+            id:6
           }
         ]
       }
@@ -271,16 +196,55 @@ quyuRight:[],
       index = e.currentTarget.dataset.index
       this.setData({
         quyuIndex:index,
-        quyuRight:this.data.quyuList[index].list
+        // quyuRight:this.data.quyuList[index].list
       })
+      console.log(this.data.quyuList[this.data.quyuIndex]);
+      
     }
   },
   // 区域右边
   checkQuyuRight(e) {
     let state = e.currentTarget.dataset.index
-    this.data.quyuRight[state].state = !this.data.quyuRight[state].state
+    
+    let arr = []
+    this.data.quyuList[this.data.quyuIndex].list[state].state= !this.data.quyuList[this.data.quyuIndex].list[state].state
+    for(let item of this.data.quyuList) {
+      for(let items of item.list) {
+        arr.push(items)
+      }
+    }
     this.setData({
-      quyuRight:this.data.quyuRight
+      quyuList:this.data.quyuList,
+      quyuCheck:arr
+    })
+
+  },
+  // 区域删除
+  del(e) {
+    let state = e.currentTarget.dataset.index
+    let id = e.currentTarget.dataset.id
+    console.log(id);
+    
+    this.data.quyuCheck = this.data.quyuCheck.filter(
+      (item, index, arr) => index!=state
+    );
+    for(let item of this.data.quyuList) {
+      for(let y in item.list) {
+        console.log(item.list[y].id,"?????");
+        
+        if(id == item.list[y].id){
+          console.log(item.list[y]);
+          
+          item.list[y].state = false
+          // item.list[y].splice(y,1)
+        }
+      }
+    }
+    console.log(this.data.quyuList);
+    
+    this.setData({
+      quyuCheck:this.data.quyuCheck,
+      quyuList:this.data.quyuList
     })
   },
   resetQuyu(e) {
@@ -293,7 +257,8 @@ quyuRight:[],
     console.log(this.data.quyuList);
     
     this.setData({
-      quyuList:this.data.quyuList
+      quyuList:this.data.quyuList,
+      quyuCheck:[]
     })
     this.checkQuyu(e,2)
   },

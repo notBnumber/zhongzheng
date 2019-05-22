@@ -36,7 +36,7 @@
   </view>
   <!-- 推客 推盘 -->
   <view class="oneTab" hover-class="none" hover-stop-propagation="false">
-    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false">
+    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false" bindtap='tk'>
       <image class="oneTabItemImg" src="../../images/tk01.png" mode='widthFix'></image>
     </view>
     <view class="oneTabItem" hover-class="none" hover-stop-propagation="false">
