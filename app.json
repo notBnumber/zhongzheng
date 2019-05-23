@@ -11,6 +11,10 @@
     "pages/logs/logs",
     "pages/ptInfo/ptInfo",
     "pages/msg/msg",
+    "pages/register/register",
+    "pages/registerText/registerText",
+    "pages/login/login",
+    "pages/bindPhoe/bindPhoe",
     "pages/my/index/index",
     "pages/my/myinfo/index",
     "pages/my/changeName/index",
@@ -20,17 +24,16 @@
     "pages/my/commission/index",
     "pages/my/myBankCard/index",
     "pages/my/addBankCard/index",
-	  "pages/toLogin/toLogin",
+    "pages/toLogin/toLogin",
     "pages/my/identityAuthentication/index",
     "pages/my/realNameAuthentication/index"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"  },
-
+    "navigationBarTextStyle": "black"
+  },
   "tabBar": {
     "color": "#666",
     "selectedColor": "#2DC59C",
@@ -59,12 +62,9 @@
     ]
   },
   "permission": {
-
     "scope.userLocation": {
-
-    "desc": "你的位置信息将用于小程序位置接口的效果展示"
-
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-
-    }
+  },
+  "sitemapLocation": "sitemap.json"
 }
