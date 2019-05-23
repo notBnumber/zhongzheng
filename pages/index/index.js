@@ -4,6 +4,7 @@ const app = getApp();
 
 Page({
   data: {
+    current:null,
     motto: "Hello World",
     userInfo: {},
     hasUserInfo: false,
@@ -80,6 +81,19 @@ Page({
         img: "https://images.unsplash.com/photo-1551446591-142875a901a1?w=640"
       }
     ]
+  },
+  // 跳转推客
+  tk() {
+    wx.navigateTo({
+      url: "../tuike/index"
+    });
+  },
+  // 滑动触发事件
+  swiperChange(e) {
+    // console.log(e.detail.current);
+    this.setData({
+      current:e.detail.current
+    })
   },
   //事件处理函数
   bindViewTap: function() {

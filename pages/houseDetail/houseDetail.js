@@ -4,6 +4,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    currentState:null,
+    autoplay: true,
+    interval: 5000,
+    current:null,
     show: false,
     imgUrls: [
       "https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640",
@@ -11,11 +15,11 @@ Page({
       "https://images.unsplash.com/photo-1551446591-142875a901a1?w=640"
     ],
     tabList: [
-      { name: "区域" },
+      { name: "其他" },
       { name: "价格" },
       { name: "房型" },
       { name: "面积" },
-      { name: "其他" }
+      { name: "区域" }
     ],
     hotList: [
       {
@@ -77,24 +81,285 @@ Page({
           { name: "三室" }
         ]
       }
-    ]
+    ],
+    mianjiList: [
+      {
+        name: "面积",
+        list: [
+          { name: "不限" },
+          { name: " 70m²以下" },
+          { name: "70-90m²" },
+          { name: "90-110m²" }
+        ]
+      }
+    ],
+    specialList:[
+      {
+        name:'其他',
+        list:[
+          {
+            name:'不限',
+            state:false
+          },
+          {
+            name:'教育房产',
+            state:false
+          }
+        ]
+      },
+      {
+        name:'用途',
+        list:[
+          {
+            name:'别墅',
+            state:false
+          },
+          {
+            name:'特价房',
+            state:false
+          }
+        ]
+      }
+    ],
+    // 其他左边
+    specialIndex:0,
+    // 其他右边
+    specialIndexs:0,
+    specialRight:[],
+    specialName:null
+,
+quyuIndex:0,
+quyuIndexs:0,
+quyuRight:[],
+// 选中的
+quyuCheck:[
+
+],
+    quyuList:[
+      {
+        name:'其他',
+        list:[
+          {
+            name:'不限',
+            state:false,
+            id:1
+          },
+          {
+            name:'不限',
+            state:false,
+            id:2
+          },
+          {
+            name:'不限',
+            state:false,
+            id:3
+          },
+          {
+            name:'教育房产',
+            state:false,
+            id:4
+          }
+        ]
+      },
+      {
+        name:'用途',
+        list:[
+          {
+            name:'别墅',
+            state:false,
+            id:5
+          },
+          {
+            name:'特价房',
+            state:false,
+            id:6
+          }
+        ]
+      }
+    ],
+  },
+  // 区域左边
+  checkQuyu(e,state) {
+    console.log(e,state);
+    let index = ''
+    if (state != null) {
+      console.log('初始化');
+      
+      // index = e.currentTarget.dataset.index
+    this.setData({
+      quyuIndex:0,
+      quyuRight:this.data.quyuList[0].list
+    })
+    } else {
+      console.log('左边');
+      
+      index = e.currentTarget.dataset.index
+      this.setData({
+        quyuIndex:index,
+        // quyuRight:this.data.quyuList[index].list
+      })
+      console.log(this.data.quyuList[this.data.quyuIndex]);
+      
+    }
+  },
+  // 区域右边
+  checkQuyuRight(e) {
+    let state = e.currentTarget.dataset.index
+    
+    let arr = []
+    this.data.quyuList[this.data.quyuIndex].list[state].state= !this.data.quyuList[this.data.quyuIndex].list[state].state
+    for(let item of this.data.quyuList) {
+      for(let items of item.list) {
+        arr.push(items)
+      }
+    }
+    this.setData({
+      quyuList:this.data.quyuList,
+      quyuCheck:arr
+    })
+
+  },
+  // 区域删除
+  del(e) {
+    let state = e.currentTarget.dataset.index
+    let id = e.currentTarget.dataset.id
+    console.log(id);
+    
+    this.data.quyuCheck = this.data.quyuCheck.filter(
+      (item, index, arr) => index!=state
+    );
+    for(let item of this.data.quyuList) {
+      for(let y in item.list) {
+        console.log(item.list[y].id,"?????");
+        
+        if(id == item.list[y].id){
+          console.log(item.list[y]);
+          
+          item.list[y].state = false
+          // item.list[y].splice(y,1)
+        }
+      }
+    }
+    console.log(this.data.quyuList);
+    
+    this.setData({
+      quyuCheck:this.data.quyuCheck,
+      quyuList:this.data.quyuList
+    })
+  },
+  resetQuyu(e) {
+    for(let item of this.data.quyuList) {
+      for (let items of item.list ) {
+        console.log(items);
+        items.state = false
+      }
+    }
+    console.log(this.data.quyuList);
+    
+    this.setData({
+      quyuList:this.data.quyuList,
+      quyuCheck:[]
+    })
+    this.checkQuyu(e,2)
+  },
+  btnQuyu() {
+    this.setData({
+      show:!this.data.show
+    })
+  },
+  // 其他左边选项
+  checkSpecial (e) {    
+    console.log(e,'其他');
+    
+    let state = e.currentTarget.dataset.index == undefined?0:e.currentTarget.dataset.index
+    this.setData({
+      specialIndex:state,
+      specialRight:this.data.specialList[state].list
+    })
+    console.log(this.data.specialRight);
+    
+  },
+  // 其他右边选项
+  checkRight(e) {
+    let state = e.currentTarget.dataset.index
+    console.log(this.data.specialRight[state].state);
+    // this.setData({
+    //   specialIndexs:state    
+    // })
+    this.data.specialRight[state].state = !this.data.specialRight[state].state
+    this.setData({
+      specialRight:this.data.specialRight
+    })
+  },
+  swiperChange(e) {
+    // console.log(e.detail.current);
+    this.setData({
+      current:e.detail.current
+    })
+  },
+  reset(e) {
+    for(let item of this.data.specialList) {
+      for (let items of item.list ) {
+        console.log(items);
+        items.state = false
+      }
+    }
+    console.log(this.data.specialList);
+    
+    this.setData({
+      specialList:this.data.specialList
+    })
+    this.checkSpecial(e)
+  },
+  btn() {
+    this.setData({
+      show:!this.data.show
+    })
   },
   filter(e) {
     let state = e.currentTarget.dataset.index
-    if (state == 0) {
+    this.setData({
+      currentState:state
+    })
+    if (state == 1) {
       this.setData({
         show: !this.data.show
       });
       this.setData({
         openList: this.data.priceList
       });
-    } else if (state == 1) {
+    } else if (state == 2) {
       this.setData({
         show: !this.data.show
       });
       this.setData({
         openList: this.data.HouseList
       });
+    }
+    else if (state == 3) {
+      this.setData({
+        show: !this.data.show
+      });
+      this.setData({
+        openList: this.data.mianjiList
+      });
+    } else if (state == 0) {
+      // 其他
+      this.setData({
+        show: !this.data.show
+      });
+      this.setData({
+        specialName:'其他'
+      });
+      this.checkSpecial(e)
+    }
+    else if (state == 4) {
+      // 区域
+      this.setData({
+        show: !this.data.show,
+        specialName:'意向区域'
+      });
+      this.checkQuyu(e,1)
     }
   },
   check(e) {

@@ -1,153 +1,181 @@
-.container-ban {
-  height: 100vh;
-  overflow: hidden;
-}
-.swiper {
+.container {
+  padding: 27rpx 20rpx;
   width: 100%;
-  height: 380rpx;
 }
-.swiper .ind {
-  width: 106rpx;
-  height: 44rpx;
-  position: absolute;
-  right: 14rpx;
-  bottom: 10rpx;
-  font-size: 28rpx;
-  font-family: PingFang-SC-Medium;
-  font-weight: 500;
-  color: #ffffff;
-  background: #000000;
-  opacity: 0.42;
-  border-radius: 10rpx;
-}
-.tab {
+.content {
   width: 100%;
-  display: flex;
-  height: 93rpx;
-  box-shadow: 0rpx 4rpx 6rpx 0rpx rgba(113, 138, 131, 0.06);
 }
-.tab .item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 18rpx;
-  padding-bottom: 18rpx;
-}
-.tab .item .itemP {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-right: 2rpx solid #C2C2C2;
-}
-.tab .item .itemP .itemName {
+.content .input-placeholder {
   font-size: 30rpx;
   font-family: PingFang-SC-Regular;
-  font-weight: bold;
-  color: #202020;
+  font-weight: 400;
+  color: #b0b0b0;
 }
-.tab .item .itemP image {
-  width: 22rpx;
-  height: 17rpx;
-  margin-left: 9rpx;
-}
-.tab .item:last-child .itemP {
-  border: none;
-}
-.hotContent {
-  padding: 24rpx 20rpx 0;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  background: #F7F8F8;
-}
-.hotContent .hotContentItem {
-  width: 345rpx;
+.content input {
+  font-size: 30rpx;
+  padding-left: 24rpx;
+  height: 88rpx;
+  background: #ffffff;
+  border: 1rpx solid #e4e4e4;
   border-radius: 10rpx;
-  overflow: hidden;
-  box-shadow: 0rpx 3rpx 7rpx 0rpx rgba(151, 155, 157, 0.15);
   margin-bottom: 21rpx;
-  padding-bottom: 21rpx;
 }
-.hotContent .hotContentItem .hotContentItemImg {
-  width: 345rpx;
-  height: 282rpx;
-  /* border-radius:10rpx 10rpx 0rpx 0rpx; */
+.types {
+  margin-top: 45rpx;
 }
-.hotContent .hotContentItem .name {
-  font-size: 34rpx;
-  font-family: PingFang-SC-Bold;
-  font-weight: bold;
-  color: #292929;
-  margin-top: 23rpx;
-}
-.hotContent .hotContentItem .address {
-  margin-top: 20rpx;
-  font-size: 26rpx;
+.types .typesTitle {
+  font-size: 30rpx;
   font-family: PingFang-SC-Medium;
   font-weight: 500;
-  color: #a4a4a4;
+  color: #626262;
 }
-.hotContent .biaoqianList {
+.types .typesContent {
+  margin-top: 26rpx;
   display: flex;
-  margin-top: 19rpx;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.hotContent .biaoqianList .biaoqian {
-  width: 94rpx;
-  height: 26rpx;
-  background: #e8fef9;
-  border-radius: 2rpx;
-  font-size: 20rpx;
+.types .typesContent .typesContentItem {
+  width: 141rpx;
+  height: 53rpx;
+  border: 1rpx solid #c3c3c3;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #626262;
+  margin-right: 27rpx;
+}
+.types .typesContent .last {
+  width: 180rpx;
+}
+.types .typesContent .active {
+  background-color: #39C6A1;
+  color: #FFFFFF;
+}
+.types .typesContent input {
+  padding-left: 14rpx;
+  flex: 1;
+  height: 53rpx;
+  border: 1rpx solid #c3c3c3;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+}
+.types .typesContent .input-placeholder {
+  width: 241rpx;
+  height: 25rpx;
+  font-size: 26rpx;
   font-family: PingFang-SC-Regular;
   font-weight: 400;
-  color: #3cc7a2;
-  margin-right: 20rpx;
+  color: #b3b3b3;
 }
-.hotContent .biaoqianList .state1 {
-  width: 94rpx;
-  height: 26rpx;
-  background: #e8eefe;
-  border-radius: 2rpx;
-  font-size: 20rpx;
+.select {
+  margin-bottom: 40rpx;
+}
+.select .title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 28rpx;
+}
+.select .title .t1 {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #626262;
+}
+.select .title .t2 {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #0eae84;
+}
+.select .content {
+  float: 1;
+  overflow: hidden;
+  height: 88rpx;
+  background: #ffffff;
+  border: 1rpx solid #e4e4e4;
+  border-radius: 10rpx;
+  font-size: 30rpx;
   font-family: PingFang-SC-Regular;
   font-weight: 400;
-  color: #9bb6fb;
-}
-.hotContent .biaoqianList .state2 {
-  width: 94rpx;
-  height: 26rpx;
-  background: #ffece8;
-  border-radius: 2rpx;
-  font-size: 20rpx;
-  font-family: PingFang-SC-Regular;
-  font-weight: 400;
-  color: #ff8c71;
-}
-.hotContent .price {
-  font-size: 32rpx;
-  font-family: PingFang-SC-Regular;
-  font-weight: bold;
-  color: #ff4c6f;
-  margin-top: 15rpx;
-}
-.hotContent .yongjin {
-  margin-top: 27rpx;
+  color: #b0b0b0;
+  padding-left: 24rpx;
   display: flex;
   align-items: center;
 }
-.hotContent .yongjin .yongjinLeft {
-  font-size: 28rpx;
-  font-family: PingFang-SC-Regular;
-  font-weight: bold;
-  color: #656565;
-  line-height: 36px;
+.inp {
+  margin-top: 45rpx;
+  padding-left: 24rpx;
+  width: 100%;
+  height: 88rpx;
+  background: #ffffff;
+  border: 1rpx solid #e4e4e4;
+  border-radius: 10rpx;
+  box-sizing: border-box;
 }
-.hotContent .yongjin .yongjinRight {
-  font-size: 28rpx;
+.input-placeholders {
+  font-size: 30rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: #b0b0b0;
+}
+.imgUrl {
+  margin-top: 69rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.imgUrl .imgUrlItem {
+  position: relative;
+  width: 148rpx;
+  height: 148rpx;
+  margin-right: 16rpx;
+  margin-bottom: 15rpx;
+}
+.imgUrl .imgUrlItem image {
+  width: 100%;
+  height: 100%;
+}
+.imgUrl .imgUrlItem .del {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.imgUrl .imgUrlItem .del image {
+  width: 39rpx;
+  height: 39rpx;
+}
+.imgUrl .add {
+  width: 148rpx;
+  height: 148rpx;
+  position: relative;
+  margin-right: 16rpx;
+  margin-bottom: 15rpx;
+}
+.imgUrl .add image {
+  width: 100%;
+  height: 100%;
+}
+.imgUrl .add view {
+  position: absolute;
+  width: 100%;
+  bottom: 23rpx;
+  font-size: 24rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: 400;
+  color: #a8a8a8;
+}
+.btn {
+  margin: 83rpx auto;
+  width: 626rpx;
+  height: 84rpx;
+  background: linear-gradient(-90deg, #38c6a0 0%, #6de0c3 100%);
+  border-radius: 42rpx;
+  font-size: 36rpx;
   font-family: PingFang-SC-Regular;
   font-weight: bold;
-  color: #FF4C6F;
+  color: #ffffff;
 }
 van-popup .van-popup {
   border-radius: 10rpx 10rpx 0 0;

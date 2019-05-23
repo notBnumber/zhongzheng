@@ -4,7 +4,13 @@
     "pages/detail/detail",
     "pages/houseDetail/houseDetail",
     "pages/panInfo/panInfo",
+    "pages/tuike/index",
+    "pages/friends/friends",
     "pages/logs/logs",
+    "pages/register/register",
+    "pages/registerText/registerText",
+    "pages/login/login",
+    "pages/bindPhoe/bindPhoe",
     "pages/my/index/index",
     "pages/my/myinfo/index",
     "pages/my/changeName/index",
@@ -14,7 +20,7 @@
     "pages/my/commission/index",
     "pages/my/myBankCard/index",
     "pages/my/addBankCard/index",
-	  "pages/toLogin/toLogin",
+    "pages/toLogin/toLogin",
     "pages/my/identityAuthentication/index",
     "pages/my/realNameAuthentication/index",
     "pages/my/drawMoney/drawMoney",
@@ -23,20 +29,17 @@
     "pages/my/help/help",
     "pages/my/collection/collection",
     "pages/my/team/team"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
-
   },
-
   "tabBar": {
-    "color": "",
-    "selectedColor": "",
-    "backgroundColor": "",
+    "color": "#666",
+    "selectedColor": "#2DC59C",
+    "backgroundColor": "#fff",
     "position": "bottom",
     "borderStyle": "black",
     "list": [
@@ -61,12 +64,9 @@
     ]
   },
   "permission": {
-
     "scope.userLocation": {
-
-    "desc": "你的位置信息将用于小程序位置接口的效果展示"
-
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-
-    }
+  },
+  "sitemapLocation": "sitemap.json"
 }

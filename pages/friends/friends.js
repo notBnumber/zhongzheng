@@ -4,12 +4,19 @@ Page({
    * 页面的初始数据
    */
   data: {
+    yusuan:'请选择设置预算',
+    mianjiplace:'请选择意向面积',
+    currentState:null,
+    show:false,
     typesList: [
       {
         name: "二手房"
       },
       {
         name: "租房"
+      },
+      {
+        name: "新房"
       }
     ],
     stateList: [
@@ -48,7 +55,57 @@ Page({
     state: 0,
     imgUrl: [
 
-    ]
+    ],
+    priceList: [
+      {
+        name: "价格",
+        list: [
+          { name: "不限" },
+          { name: "5000元以下/平方" },
+          { name: "5000-10000元/平方" },
+          { name: "5000元以下/平方" }
+        ]
+      }
+    ],
+    mianjiList: [
+      {
+        name: "面积",
+        list: [
+          { name: "不限" },
+          { name: " 70m²以下" },
+          { name: "70-90m²" },
+          { name: "90-110m²" }
+        ]
+      }
+    ],
+    openList:[]
+  },
+  //关闭弹框
+  onClose() {
+    this.setData({
+      show: !this.data.show
+    });
+  },
+  // 选中关闭弹框
+  check(e) {
+    let index =  e.currentTarget.dataset.index
+    console.log(index,this.data.openList);
+    
+    if (this.data.currentState == 1) {
+      this.setData({
+        yusuan: this.data.openList[0].list[index].name
+  
+      })
+    } else if(this.data.currentState == 2){
+      this.setData({
+        mianjiplace: this.data.openList[0].list[index].name
+  
+      })
+    }
+    this.setData({
+      show:!this.data.show,
+
+    })
   },
   checkTypes(e) {
     console.log(e);
@@ -88,6 +145,24 @@ Page({
       }
     })
   },
+  // 预算
+  money(e) {
+    console.log(e.currentTarget.dataset.id);
+    this.setData({
+      show:!this.data.show,
+      openList:this.data.priceList,
+      currentState:e.currentTarget.dataset.id
+    })
+  },
+    // 面积
+    mianji(e) {
+      console.log(e.currentTarget.dataset.id);
+      this.setData({
+        show:!this.data.show,
+        openList:this.data.mianjiList,
+        currentState:e.currentTarget.dataset.id
+      })
+    },
   /**
    * 生命周期函数--监听页面加载
    */

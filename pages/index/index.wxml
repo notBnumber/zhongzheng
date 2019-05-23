@@ -13,9 +13,7 @@
   <view class="search " hover-class="none" hover-stop-propagation="false">
     <view class="searchLeft" hover-class="none" hover-stop-propagation="false">
       <image class="" src="../../images/dw01.png"></image>
-      <view class="" hover-class="none" hover-stop-propagation="false">
-        广州
-      </view>
+      <view class="" hover-class="none" hover-stop-propagation="false">广州</view>
     </view>
     <!-- <input type="text"> -->
     <view class="inp" hover-class="none" hover-stop-propagation="false">
@@ -25,20 +23,20 @@
   </view>
   <!-- 轮播图 -->
   <view class="swiper" hover-class="none" hover-stop-propagation="false">
-    <swiper autoplay="{{autoplay}}" interval="{{interval}}">
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}" bindchange='swiperChange'>
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
           <image src="{{item}}" class="slide-image" />
-          <view class="ind df" hover-class="none" hover-stop-propagation="false">
-            {{imgUrls.length}}/{{index+1}}
-          </view>
         </swiper-item>
       </block>
     </swiper>
+    <view class="ind df" hover-class="none" hover-stop-propagation="false">
+      {{imgUrls.length}}/{{current+1}}
+    </view>
   </view>
   <!-- 推客 推盘 -->
   <view class="oneTab" hover-class="none" hover-stop-propagation="false">
-    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false">
+    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false" bindtap='tk'>
       <image class="oneTabItemImg" src="../../images/tk01.png" mode='widthFix'></image>
     </view>
     <view class="oneTabItem" hover-class="none" hover-stop-propagation="false">
@@ -86,7 +84,6 @@
             {{items.name}}
           </view>
         </view>
-
         <view class="price" hover-class="none" hover-stop-propagation="false">{{item.price}}</view>
       </view>
     </view>
