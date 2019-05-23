@@ -1,32 +1,13 @@
-// pages/my/withdraw/index.js
-const app = getApp()
+// pages/my/aboutOurs/aboutOurs.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isProup: false,
-    height: app.globalData.height
+
   },
 
-  pageTo({currentTarget: {dataset}}){
-    // console.log(dataset);
-    wx.navigateTo({
-      url: dataset.url
-    })
-  },
-  Invitation(){
-    this.setData({
-      isProup: !this.data.isProup
-    })
-  },
-  goback(){
-    wx.navigateBack()
-  },
-  cashTap(){
-    wx.navigateTo({ url: '../drawMoney/drawMoney' });
-  },
   /**
    * 生命周期函数--监听页面加载
    */

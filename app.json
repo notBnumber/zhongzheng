@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
+     "pages/index/index",
     "pages/detail/detail",
     "pages/houseDetail/houseDetail",
     "pages/panInfo/panInfo",
@@ -26,7 +26,13 @@
     "pages/my/addBankCard/index",
     "pages/toLogin/toLogin",
     "pages/my/identityAuthentication/index",
-    "pages/my/realNameAuthentication/index"
+    "pages/my/realNameAuthentication/index",
+    "pages/my/drawMoney/drawMoney",
+    "pages/my/aboutOurs/aboutOurs",
+    "pages/my/feedback/feedback",
+    "pages/my/help/help",
+    "pages/my/collection/collection",
+    "pages/my/team/team"
   ],
   "window": {
     "backgroundTextStyle": "light",

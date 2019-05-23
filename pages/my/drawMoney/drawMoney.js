@@ -1,31 +1,25 @@
-// pages/my/withdraw/index.js
-const app = getApp()
+// pages/my/drawMoney/drawMoney.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isProup: false,
-    height: app.globalData.height
+    cashPrice:''
   },
-
-  pageTo({currentTarget: {dataset}}){
-    // console.log(dataset);
-    wx.navigateTo({
-      url: dataset.url
-    })
-  },
-  Invitation(){
+  bindinputPrice(e) {
     this.setData({
-      isProup: !this.data.isProup
+      cashPrice: e.detail.value
     })
   },
-  goback(){
-    wx.navigateBack()
+  cashAll(){
+
   },
-  cashTap(){
-    wx.navigateTo({ url: '../drawMoney/drawMoney' });
+  getCash(){
+    setTimeout(function(){
+      wx.switchTab({ url: '../index/index' });
+    },2000)
+    
   },
   /**
    * 生命周期函数--监听页面加载

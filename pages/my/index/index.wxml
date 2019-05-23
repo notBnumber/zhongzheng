@@ -26,35 +26,35 @@
   </view>
 
   <view class="ul">
-    <view class="li">
+    <view class="li" bindtap="myTeam">
       <view class="left">
         <image src="../../../images/td01.png" mode="widthFix" style="width:20px;"></image>
         <text>我的团队</text>
       </view>
       <image class="arrIcon" src="../../../images/zy01.png"></image>
     </view>
-    <view class="li">
+    <view class="li" bindtap="Mycollected">
       <view class="left">
         <image src="../../../images/sc10.png" mode="widthFix" style="width:20px;"></image>
         <text>我的收藏</text>
       </view>
       <image class="arrIcon" src="../../../images/zy01.png"></image>
     </view>
-    <view class="li">
+    <view class="li" bindtap="feedback">
       <view class="left">
         <image src="../../../images/yj01.png" mode="widthFix" style="width:20px;"></image>
         <text>意见反馈</text>
       </view>
       <image class="arrIcon" src="../../../images/zy01.png"></image>
     </view>
-    <view class="li">
+    <view class="li" bindtap="helpCenter">
       <view class="left">
         <image src="../../../images/bz01.png" mode="widthFix" style="width:20px;"></image>
         <text>帮助中心</text>
       </view>
       <image class="arrIcon" src="../../../images/zy01.png"></image>
     </view>
-    <view class="li">
+    <view class="li" bindtap="aboutUs">
       <view class="left">
         <image src="../../../images/gy01.png" mode="widthFix" style="width:20px;"></image>
         <text>关于我们</text>

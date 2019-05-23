@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 11,
+			"current": 14,
 			"list": [
 				{
 					"id": -1,
@@ -92,8 +92,8 @@
 				},
 				{
 					"id": -1,
-					"name": "推客",
-					"pathName": "pages/tuike/index",
+					"name": "code",
+					"pathName": "pages/my/identityAuthentication/index",
 					"query": "",
 					"scene": null
 				},
