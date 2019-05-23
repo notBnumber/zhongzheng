@@ -1,31 +1,25 @@
-// pages/my/withdraw/index.js
-const app = getApp()
+// pages/my/help/help.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    isProup: false,
-    height: app.globalData.height
+   currentIndex:null,
+   dataList:[
+     { title: '问题沙发上', content: '发顺丰阿尔泰' },
+     { title: '放散阀', content: '阿芳阿芳答案' },
+     { title: '发斯蒂芬', content: '大萨达阿芳啊' },
+     {title: '范德萨发',content:'发发生态为'},
+   ]
   },
-
-  pageTo({currentTarget: {dataset}}){
-    // console.log(dataset);
-    wx.navigateTo({
-      url: dataset.url
-    })
-  },
-  Invitation(){
+  solveTap(e){
     this.setData({
-      isProup: !this.data.isProup
+      currentIndex: e.currentTarget.dataset.index
     })
   },
-  goback(){
-    wx.navigateBack()
-  },
-  cashTap(){
-    wx.navigateTo({ url: '../drawMoney/drawMoney' });
+  goFeedBack(){
+    wx.navigateTo({ url: '../feedback/feedback' });
   },
   /**
    * 生命周期函数--监听页面加载

@@ -5,9 +5,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    cardNumber:''
   },
-
+  getCode(e){
+    this.setData({
+      cardNumber: e.detail.value
+    })
+  },
+  tapStep(e){
+    wx.navigateTo({ url: '../realNameAuthentication/index' });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

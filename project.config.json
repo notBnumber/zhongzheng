@@ -37,8 +37,9 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
-			"list": [{
+			"current": 14,
+			"list": [
+				{
 					"id": -1,
 					"name": "w d ",
 					"pathName": "pages/my/index/index",
@@ -63,6 +64,7 @@
 					"id": -1,
 					"name": "银行卡列表",
 					"pathName": "pages/my/myBankCard/index",
+					"query": "",
 					"scene": null
 				},
 				{
@@ -83,6 +85,63 @@
 					"id": -1,
 					"name": "推盘信息",
 					"pathName": "pages/panInfo/panInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "code",
+					"pathName": "pages/my/identityAuthentication/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "code2",
+					"pathName": "pages/my/addBankCard/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "realName",
+					"pathName": "pages/my/realNameAuthentication/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "提现",
+					"pathName": "pages/my/drawMoney/drawMoney",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "feedback",
+					"pathName": "pages/my/feedback/feedback",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "paninfo",
+					"pathName": "pages/panInfo/panInfo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "question",
+					"pathName": "pages/my/help/help",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "captain",
+					"pathName": "pages/my/team/team",
+					"query": "",
 					"scene": null
 				}
 			]

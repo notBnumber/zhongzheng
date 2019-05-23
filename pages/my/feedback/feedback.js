@@ -1,49 +1,53 @@
-// pages/my/realNameAuthentication/index.js
+// pages/my/feedback/feedback.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    realName:'',
-    cardText:'',
-    tempFileOne:'../../../images/sm501.png',
-    tempFileSecond:'../../../images/sm502.png',
+    textarea: '',
+    imgUrl:[]
   },
-  upLoader(e){
-    let that=this;
+  innerText(e){
+    this.setData({
+      textarea: e.detail.value
+    })
+  },
+  submit(){
+    wx.switchTab({ url: '../index/index' });
+  },
+  chooseImg(e){
+    let that = this
     wx.chooseImage({
-      count: 1,
+      count: 3-that.data.imgUrl.length,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
-       console.log(res)
+        const tempFilePaths = res.tempFilePaths
+        console.log(tempFilePaths, '图片数组');
+        let arr = that.data.imgUrl.concat(tempFilePaths)
         that.setData({
-          tempFileOne:res.tempFilePaths,
+          imgUrl: arr
         })
       }
     })
   },
-  topLoader(e){
-    let that = this;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success(res) {
-        // tempFilePath可以作为img标签的src属性显示图片
-        console.log(res)
-        that.setData({
-          tempFileSecond: res.tempFilePaths
-        })
-      }
+  del(e){
+    const currentIndex = e.currentTarget.dataset.index;
+    var currentIcon=this.data.imgUrl.splice(currentIndex, 1)
+    this.setData({
+      imgUrl:this.data.imgUrl
+    })
+  
+  },
+  preview(e){
+    const index = e.currentTarget.dataset.index;
+    wx.previewImage({
+      current: this.data.imgUrl[index], // 当前显示图片的http链接
+      urls: this.data.imgUrl // 需要预览的图片http链接列表
     })
   },
-  tapNext(e){
-    wx.navigateTo({ url: '../addBankCard/index' });
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */

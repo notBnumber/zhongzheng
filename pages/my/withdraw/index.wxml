@@ -14,7 +14,7 @@
       </view>
       <view class="withdrawal">
          <test>￥100.12</test>
-         <button plain>提现</button>
+         <button plain bindtap="cashTap">提现</button>
       </view>
     </view>
   </view>
