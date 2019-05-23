@@ -102,10 +102,7 @@
       </view>
     </view>
   </van-popup>
-  <view class="content" hover-class="none" hover-stop-propagation="false">
-    <input class="" value="" type="text" placeholder="请输入被推荐人姓名" placeholder-style="" placeholder-class="input-placeholder"></input>
-    <input class="" value="" type="number" placeholder="请输入被推荐人手机号" placeholder-style="" placeholder-class="input-placeholder"></input>
-  </view>
+
   <view class="types" hover-class="none" hover-stop-propagation="false" style="margin-bottom:50rpx">
     <view class="typesTitle" hover-class="none" hover-stop-propagation="false">意向类型：</view>
     <view class="typesContent" hover-class="none" hover-stop-propagation="false">
@@ -160,15 +157,11 @@
       </view>
     </view>
   </view>
-  <view class="types" hover-class="none" hover-stop-propagation="false">
-    <view class="typesTitle" hover-class="none" hover-stop-propagation="false">房源状态：</view>
-    <view class="typesContent" hover-class="none" hover-stop-propagation="false">
-      <view class="typesContentItem df {{state == index?'active':''}} " hover-class="none" hover-stop-propagation="false" wx:for="{{stateList}}" wx:for-index="index" data-index='{{index}}' bindtap='checkState'>
-        {{item.name}}
-      </view>
-    </view>
+  <view class="phone" hover-class="none" hover-stop-propagation="false">
+    联系方式：
   </view>
   <input class="inp" value="" type="text" placeholder="请输入与被推荐人关系" placeholder-style="" placeholder-class="input-placeholders"></input>
+  
   <view class="btn df" hover-class="none" hover-stop-propagation="false">
     提交客源
   </view>

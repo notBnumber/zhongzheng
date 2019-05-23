@@ -96,9 +96,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 8,
 					"name": "盘源信息",
 					"pathName": "pages/friends/friends",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/logs/logs",
+					"query": "",
 					"scene": null
 				}
 			]

@@ -39,7 +39,7 @@
     <view class="oneTabItem" hover-class="none" hover-stop-propagation="false" bindtap='tk'>
       <image class="oneTabItemImg" src="../../images/tk01.png" mode='widthFix'></image>
     </view>
-    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false">
+    <view class="oneTabItem" hover-class="none" hover-stop-propagation="false" bindtap='tp'>
       <image class="oneTabItemImg" src="../../images/tp01.png" mode='widthFix'></image>
     </view>
   </view>
