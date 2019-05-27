@@ -10,6 +10,7 @@
     "pages/register/register",
     "pages/registerText/registerText",
     "pages/login/login",
+    "pages/chooseCity/chooseCity",
     "pages/bindPhoe/bindPhoe",
     "pages/my/index/index",
     "pages/my/myinfo/index",
