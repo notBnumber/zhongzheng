@@ -1,0 +1,28 @@
+<view class="outer">
+  <view class="collected">
+    <view class="section">
+      <view class="container">
+        <view class="total" wx:for="{{sellList}}" wx:kex="index">
+          <image class="logo" src="{{item.img}}" mode="aspectFill"></image>
+          <view class="name">{{item.name}}</view>
+          <view class="area font-Medium">{{item.address}}</view>
+          <view class="biaoqianList">
+            <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}"  wx:for="{{item.list}}" wx:for-item="items">{{items.name}}</view>
+          </view>
+          <view class="sum font">
+            可获佣金：
+            <text>{{item.commisson}}</text>
+          </view>
+          <view class="price">{{item.price}}</view>
+        </view>
+      </view>
+      <!-- 没有 -->
+    </view>
+    <view class="nonono font-Medium">没有更多啦</view>
+  </view>
+  <view class="empty" wx:if="{{hidden}}">
+    <image class="icon" src="../../../images/sousuo-kong.png"></image>
+    <view class="comment font-Medium">暂无收藏的房源</view>
+    <view class="btn font-f1" bindtap="goIndex">去首页逛逛</view>
+  </view>
+</view>

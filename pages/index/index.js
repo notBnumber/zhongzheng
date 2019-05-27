@@ -4,7 +4,7 @@ const app = getApp();
 
 Page({
   data: {
-    current:null,
+    current: null,
     motto: "Hello World",
     userInfo: {},
     hasUserInfo: false,
@@ -16,6 +16,7 @@ Page({
     ],
     autoplay: true,
     interval: 5000,
+    indicatorDots:false,
     twoTabList: [
       {
         name: "新房",
@@ -80,6 +81,14 @@ Page({
         price: "20.06 万元",
         img: "https://images.unsplash.com/photo-1551446591-142875a901a1?w=640"
       }
+    ],
+    list:[
+      {title:'购房',
+      content:'数据了分割金融机构'
+      },
+      {title:'卖房',
+      content:'胜多负少的公司的'
+      }
     ]
   },
   // 跳转推客
@@ -88,17 +97,29 @@ Page({
       url: "../tuike/index"
     });
   },
+  // 跳转推盘
+  tp() {
+    wx.navigateTo({
+      url: "../tuipan/index"
+    });
+  },
   // 滑动触发事件
   swiperChange(e) {
     // console.log(e.detail.current);
     this.setData({
-      current:e.detail.current
-    })
+      current: e.detail.current
+    });
   },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: "../logs/logs"
+    });
+  },
+  // 搜索页面
+  toReault() {
+    wx.navigateTo({
+      url: "../result/result?state=1"
     });
   },
   onLoad: function() {
@@ -134,9 +155,8 @@ Page({
   },
   onShow() {
     // console.log(this.data.globalData);
-    var app=getApp();     // 取得全局App
-    app.fun()
-    
+    var app = getApp(); // 取得全局App
+    app.fun();
   },
   getUserInfo: function(e) {
     console.log(e);
@@ -156,17 +176,23 @@ Page({
   // 房屋详情
   toDetail(e) {
     console.log(e.currentTarget.dataset);
-    
+
     wx.navigateTo({
-      url:'../detail/detail?id='+e.currentTarget.dataset.id
-    })
+      url: "../detail/detail?id=" + e.currentTarget.dataset.id
+    });
   },
   // 房屋列表
   toHouseDetail(e) {
     console.log(e.currentTarget.dataset.index);
-    
-    wx.navigateTo({
-      url:'../houseDetail/houseDetail?index='+e.currentTarget.dataset.index
-    })
+    let state = e.currentTarget.dataset.index;
+    if (state == 3) {
+      wx.navigateTo({
+        url: "../find/find?index=" + e.currentTarget.dataset.index
+      });
+    } else {
+      wx.navigateTo({
+        url: "../houseDetail/houseDetail?index=" + e.currentTarget.dataset.index
+      });
+    }
   }
 });

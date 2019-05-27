@@ -6,7 +6,7 @@
         <view class="name" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 1 || currentState == 2}}">
           {{openList[0].name}}
         </view>
-        <view class="name" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 0 || currentState == 4}}">
+        <view class="name" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState ==0}}">
           {{specialName}}
         </view>
         <view class="dian" hover-class="none" hover-stop-propagation="false"></view>
@@ -16,7 +16,7 @@
           {{item.name}}
         </view>
       </view>
-      <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 0}}">
+      <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 9}}">
         <view class="contentTop" hover-class="none" hover-stop-propagation="false">
           <scroll-view class="" scroll-y style="height: 803rpx;width:200rpx">
             <view class="left" hover-class="none" hover-stop-propagation="false">
@@ -46,7 +46,7 @@
         </view>
       </view>
       <!-- 意向区域 -->
-      <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 4}}">
+      <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 0}}" >
         <view class="contentTop" hover-class="none" hover-stop-propagation="false">
           <scroll-view class="" scroll-y style="height: 803rpx;width:200rpx">
             <view class="left" hover-class="none" hover-stop-propagation="false">
@@ -115,7 +115,7 @@
     </view>
   </view>
   <!-- 意向区域 -->
-  <view class="select" hover-class="none" hover-stop-propagation="false">
+  <view class="select" hover-class="none" hover-stop-propagation="false" data-id='0' bindtap = 'quyu'>
     <view class="title" hover-class="none" hover-stop-propagation="false">
       <view class='t1'>
         意向区域：
@@ -169,21 +169,7 @@
     </view>
   </view>
   <input class="inp" value="" type="text" placeholder="请输入与被推荐人关系" placeholder-style="" placeholder-class="input-placeholders"></input>
-  <view class="imgUrl" hover-class="none" hover-stop-propagation="false">
-    <view class="imgUrlItem" hover-class="none" hover-stop-propagation="false" wx:for="{{imgUrl}}" wx:for-index="{{index}}">
-      <image class="" src="{{item}}" mode='aspectFill'></image>
-      <view class="del" hover-class="none" hover-stop-propagation="false">
-        <image class="" src="../../images/sc.png" ></image>
-      </view>
-    </view>
-    <view class="add" hover-class="none" hover-stop-propagation="false" wx:if="{{imgUrl.length<5}}" bindtap='chooseImg'>
-      <image class="" src="../../images/add.png" ></image>
-      <view class="df" hover-class="none" hover-stop-propagation="false" >
-        最多五张
-      </view>
-    </view>
-  </view>
   <view class="btn df" hover-class="none" hover-stop-propagation="false">
-    提交房源
+    提交客源
   </view>
 </view>

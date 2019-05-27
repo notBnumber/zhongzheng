@@ -1,0 +1,16 @@
+<!--pages/ptInfo/ptInfo.wxml-->
+
+<view class="container">
+  <view class="title" hover-class="none" hover-stop-propagation="false">
+    平台通知平台通知平台通知平台通知平台通知平台通知平台通知平台通知
+    平台通知平台通知平台通知平台通知平台通知平台通知平台通知平台通知
+  </view>
+  <view class="middle" hover-class="none" hover-stop-propagation="">
+    <view class="logo" hover-class="none" hover-stop-propagation="false">
+      仲达网
+    </view>
+    <view class="time" hover-class="none" hover-stop-propagation="false">
+      2017-11-11
+    </view>
+  </view>
+</view>

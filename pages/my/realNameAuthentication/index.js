@@ -5,7 +5,43 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    realName:'',
+    cardText:'',
+    tempFileOne:'../../../images/sm501.png',
+    tempFileSecond:'../../../images/sm502.png',
+  },
+  upLoader(e){
+    let that=this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+       console.log(res)
+        that.setData({
+          tempFileOne:res.tempFilePaths,
+        })
+      }
+    })
+  },
+  topLoader(e){
+    let that = this;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success(res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        console.log(res)
+        that.setData({
+          tempFileSecond: res.tempFilePaths
+        })
+      }
+    })
+  },
+  tapNext(e){
+    wx.navigateTo({ url: '../addBankCard/index' });
   },
 
   /**

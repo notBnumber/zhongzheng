@@ -39,8 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,
-			"list": [
+			"current": 12,			"list": [
 				{
 					"id": -1,
 					"name": "w d ",
@@ -98,7 +97,7 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 8,
 					"name": "盘源信息",
 					"pathName": "pages/friends/friends",
 					"query": "",
@@ -106,22 +105,23 @@
 				},
 				{
 					"id": -1,
-					"name": "       ",
-					"pathName": "pages/bindPhoe/bindPhoe",
+					"name": "消息",
+					"pathName": "pages/logs/logs",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "登录",
-					"pathName": "pages/login/login",
+					"name": "找房",
+					"pathName": "pages/find/find",
 					"query": "",
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "注册",
-					"pathName": "pages/register/register",
+					"id": 11,
+					"name": "搜索结果",
+					"pathName": "pages/result/result",
+					"query": "state=2&name=新房",
 					"query": "",
 					"scene": null
 				},

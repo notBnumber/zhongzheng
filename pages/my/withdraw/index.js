@@ -24,6 +24,9 @@ Page({
   goback(){
     wx.navigateBack()
   },
+  cashTap(){
+    wx.navigateTo({ url: '../drawMoney/drawMoney' });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

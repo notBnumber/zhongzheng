@@ -218,6 +218,40 @@ van-popup .van-popup {
   font-weight: bold;
   color: #38c6a0;
 }
+.box .content .contentTop .specialRight {
+  flex: 1;
+  padding: 15rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-left: 1rpx solid #E4E4E4;
+}
+.box .content .contentTop .specialRight .rightItem {
+  width: 200rpx;
+  height: 50rpx;
+  border: 1rpx solid #999999;
+  border-radius: 10rpx;
+  font-size: 30rpx;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #999999;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.box .content .contentTop .specialRight .rightItem .yes {
+  font-size: 15rpx;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 48rpx;
+  height: 20rpx;
+  background: #38c6a0;
+  border-radius: 10rpx 0rpx 10rpx 0rpx;
+}
+.box .content .contentTop .specialRight .active {
+  color: #38c6a0;
+  border: 1rpx solid #38c6a0;
+}
 .box .content .contentTop .rightTop {
   flex: 1;
   height: 555rpx;

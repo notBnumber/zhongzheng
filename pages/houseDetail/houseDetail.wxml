@@ -28,7 +28,7 @@
               </view>
             </view>
           </scroll-view>
-          <view class="right" hover-class="none" hover-stop-propagation="false">
+          <view class="right specialRight" hover-class="none" hover-stop-propagation="false">
             <view class="rightItem df {{item.state == true ?'active' :''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{specialRight}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkRight'>
               {{item.name}}
               <view class="{{item.state == true ?'yes' :''}} df" hover-class="none" hover-stop-propagation="false" wx:if="{{item.state == true}}">

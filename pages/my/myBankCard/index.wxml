@@ -3,7 +3,7 @@
   <view class="bankList">
     <view class="items" wx:for="{{10}}">
       <van-swipe-cell right-width="{{ 70 }}" async-close bind:close="onClose">
-        <view class="box">
+        <view class="box"> 
           <image src="../../../images/kh01.png"></image>
           <view class="bank">
             <view>开户银行：邮政银行（增城荔城支行)</view>
@@ -19,6 +19,6 @@
   </view>
   <!-- 添加银行卡 -->
   <view class="addBank">
-    <view bindtap="pageTo" data-url="/pages/my/addBankCard/index">添加银行卡</view>
+    <view bindtap="pageTo" data-url="/pages/my/identityAuthentication/index">添加银行卡</view>
   </view>
 </view>

@@ -1,12 +1,17 @@
 {
   "pages": [
-    "pages/index/index",
+     "pages/index/index",
     "pages/detail/detail",
     "pages/houseDetail/houseDetail",
     "pages/panInfo/panInfo",
     "pages/tuike/index",
+    "pages/tuipan/index",
     "pages/friends/friends",
+    "pages/find/find",
     "pages/logs/logs",
+    "pages/ptInfo/ptInfo",
+    "pages/msg/msg",
+    "pages/result/result",
     "pages/register/register",
     "pages/registerText/registerText",
     "pages/login/login",
@@ -23,7 +28,13 @@
     "pages/my/addBankCard/index",
     "pages/toLogin/toLogin",
     "pages/my/identityAuthentication/index",
-    "pages/my/realNameAuthentication/index"
+    "pages/my/realNameAuthentication/index",
+    "pages/my/drawMoney/drawMoney",
+    "pages/my/aboutOurs/aboutOurs",
+    "pages/my/feedback/feedback",
+    "pages/my/help/help",
+    "pages/my/collection/collection",
+    "pages/my/team/team"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -338,3 +338,11 @@ swiper-item {
   font-weight: 500;
   color: rgba(139, 139, 139, 1);
 }
+
+
+.wordSwiper {
+  width: 100%;
+  height: 86rpx;
+   pointer-events: none;
+    cursor: default;
+}

@@ -19,6 +19,21 @@ Page({
       isProup: !this.data.isProup
     })
   },
+  aboutUs(){
+    wx.navigateTo({ url: '../aboutOurs/aboutOurs' });
+  },
+  feedback(){
+    wx.navigateTo({ url: '../feedback/feedback' });
+  },
+  helpCenter(){
+    wx.navigateTo({ url: '../help/help' });
+  },
+  Mycollected(){
+    wx.navigateTo({ url: '../collection/collection' });
+  },
+  myTeam(){
+    wx.navigateTo({ url: '../team/team' });
+  },
   /**
    * 生命周期函数--监听页面加载
    */

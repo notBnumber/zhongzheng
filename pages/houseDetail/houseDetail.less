@@ -271,7 +271,42 @@ van-popup {
           }
         }
       }
+      .specialRight {
+        flex: 1;
+        padding:15rpx 30rpx;
+        display: flex;
+        justify-content: space-between;
+        border-left: 1rpx solid #E4E4E4;
+        .rightItem {
+          width: 200rpx;
+          height: 50rpx;
+          border: 1rpx solid rgba(153, 153, 153, 1);
+          border-radius: 10rpx;
+          font-size: 30rpx;
+          font-family: PingFang-SC-Medium;
+          font-weight: 500;
+          color: rgba(153, 153, 153, 1);
+          position: relative;
+          margin-bottom: 20rpx;
 
+          .yes {
+            font-size: 15rpx;
+            color: #fff;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 48rpx;
+            height: 20rpx;
+            background: rgba(56, 198, 160, 1);
+            border-radius: 10rpx 0rpx 10rpx 0rpx;
+          }
+        }
+
+        .active {
+          color: rgba(56, 198, 160, 1);
+          border: 1rpx solid rgba(56, 198, 160, 1);
+        }
+      }
       .rightTop {
         flex: 1;
         height: 555rpx;
@@ -315,6 +350,7 @@ van-popup {
             border: 1rpx solid rgba(56, 198, 160, 1);
           }
         }
+
       }
 
       .rightBottom {
