@@ -16,6 +16,7 @@ Page({
     ],
     autoplay: true,
     interval: 5000,
+    indicatorDots:false,
     twoTabList: [
       {
         name: "新房",
@@ -80,6 +81,14 @@ Page({
         price: "20.06 万元",
         img: "https://images.unsplash.com/photo-1551446591-142875a901a1?w=640"
       }
+    ],
+    list:[
+      {title:'购房',
+      content:'数据了分割金融机构'
+      },
+      {title:'卖房',
+      content:'胜多负少的公司的'
+      }
     ]
   },
   // 跳转推客
@@ -105,6 +114,12 @@ Page({
   bindViewTap: function() {
     wx.navigateTo({
       url: "../logs/logs"
+    });
+  },
+  // 搜索页面
+  toReault() {
+    wx.navigateTo({
+      url: "../result/result?state=1"
     });
   },
   onLoad: function() {

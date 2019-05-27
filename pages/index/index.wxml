@@ -10,7 +10,7 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view> -->
-  <view class="search " hover-class="none" hover-stop-propagation="false">
+  <view class="search " hover-class="none" hover-stop-propagation="false" bindtap = 'toReault'>
     <view class="searchLeft" hover-class="none" hover-stop-propagation="false">
       <image class="" src="../../images/dw01.png"></image>
       <view class="" hover-class="none" hover-stop-propagation="false">广州</view>
@@ -23,7 +23,7 @@
   </view>
   <!-- 轮播图 -->
   <view class="swiper" hover-class="none" hover-stop-propagation="false">
-    <swiper autoplay="{{autoplay}}" interval="{{interval}}" bindchange='swiperChange'>
+    <swiper autoplay="{{autoplay}}" interval="{{interval}}" bindchange='swiperChange' circular>
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
           <image src="{{item}}" class="slide-image" />
@@ -53,12 +53,23 @@
     </view>
   </view>
   <!-- 文字轮播 -->
-  <view class="word" hover-class="none" hover-stop-propagation="false">
-    <view class="wordLeft df" hover-class="none" hover-stop-propagation="false">购房</view>
+
+
+   <swiper class='wordSwiper' indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical circular>
+  <block wx:for="{{list}}" wx:key="key">
+    <swiper-item>
+       <view class="word" hover-class="none" hover-stop-propagation="false">
+    <view class="wordLeft df" hover-class="none" hover-stop-propagation="false">{{item.title}}</view>
     <view class="wordRight" hover-class="none" hover-stop-propagation="false">
-      王先生购买保利中心复式100m²一套，总价100W
+     {{item.content}}
     </view>
   </view>
+    </swiper-item>
+  </block>
+</swiper>
+
+
   <!-- 分割线 -->
   <view class="break" hover-class="none" hover-stop-propagation="false"></view>
   <!-- 热门推荐 -->

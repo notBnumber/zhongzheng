@@ -11,6 +11,7 @@
     "pages/logs/logs",
     "pages/ptInfo/ptInfo",
     "pages/msg/msg",
+    "pages/result/result",
     "pages/register/register",
     "pages/registerText/registerText",
     "pages/login/login",
