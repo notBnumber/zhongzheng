@@ -1,5 +1,5 @@
 <view class="outer">
-  <view class="teamWork" wx:if="{{false}}">
+  <view class="teamWork" wx:if="{{num == true}}">
     <view class="captain">
       <text class="topic">我的队长</text>
       <view class="detail" wx:for="{{2}}">
@@ -12,7 +12,7 @@
     </view>
     <view class="teamer">
       <text class="title">我的队员（5人）</text>
-      <view class="inner" wx:for="{{3}}">
+      <view class="inner" wx:for="{{30}}">
         <view class="contain">
           <image class="icon" src="../../../images/tx04.png"></image>
           <view class="describe">
@@ -24,7 +24,7 @@
       </view>
     </view>
   </view>
-  <view class="container">
+  <view class="container" wx:else>
     <image class="icon" src="../../../images/xb01.png"></image>
     <view class="comment font-Medium">暂无团队记录</view>
     <view class="btn font-f1" bindtap="goInvite">前去邀请</view>

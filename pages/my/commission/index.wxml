@@ -14,10 +14,7 @@
           <test>总佣金</test>
           <test>¥ 60.00</test>
         </view>
-        <view >
-           <test>即将到账</test>
-           <test>￥100.12</test>
-        </view>
+
       </view>
     </view>
     <view class="detailed">

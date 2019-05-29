@@ -1,6 +1,7 @@
 //index.js
 //获取应用实例
 const app = getApp();
+const util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -157,6 +158,8 @@ Page({
     // console.log(this.data.globalData);
     var app = getApp(); // 取得全局App
     app.fun();
+    console.log(util.formatTime,'??');
+    
   },
   getUserInfo: function(e) {
     console.log(e);

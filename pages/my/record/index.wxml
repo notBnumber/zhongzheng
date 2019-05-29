@@ -7,7 +7,7 @@
       </view>
       <view class="right {{index == 1 ? 'red' : index == 2 ? 'green': '' }}" >
         <view>¥30</view>
-        <view>未到账</view>
+        <view>{{item.state}}</view>
       </view>
     </view>
   </view>

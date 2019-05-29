@@ -39,7 +39,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 12,			"list": [
+			"current": 13,
+			"list": [
 				{
 					"id": -1,
 					"name": "w d ",
@@ -121,7 +122,6 @@
 					"id": 11,
 					"name": "搜索结果",
 					"pathName": "pages/result/result",
-					"query": "state=2&name=新房",
 					"query": "",
 					"scene": null
 				},
@@ -129,6 +129,14 @@
 					"id": -1,
 					"name": "选择城市",
 					"pathName": "pages/chooseCity/chooseCity",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "房源类型详情",
+					"pathName": "pages/chooseCity/chooseCity",
+					"query": "",
 					"scene": null
 				}
 			]

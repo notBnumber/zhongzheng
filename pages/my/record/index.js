@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    recordList: ['','','']
+    recordList: [{ state: '未到账' }, { state: '银行卡未到账' }, { state: '已到账' }]
   },
 
   /**

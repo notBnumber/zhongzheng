@@ -7,7 +7,7 @@
     </view>
   </view>
   <view class="scroll">
-    <scroll-view  scroll-y style="height: 100%;" scroll-into-view="{{position}}" >
+    <scroll-view  scroll-y style="height: 100%;" scroll-into-view="{{position}}" scroll-with-animation>
 
       <view class="box" wx:for="{{cityList}}" wx:key="{{index}}" id="{{item.title}}">
         <view class="title">{{item.title}}</view>

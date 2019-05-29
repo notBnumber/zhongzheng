@@ -30,7 +30,7 @@ Page({
       });
     } else {
       wx.navigateTo({
-        url: '../../pages/msg/msg',
+        url: '../msg/msg',
         success: (result)=>{
           
         },
