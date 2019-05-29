@@ -16,7 +16,7 @@
       <input type="number" placeholder="请输入邀请码（必填）"/>
     </view>
 
-    <view class="btn">登录</view>
+    <view class="btn" bindtap="pageToIndex" data-url="/pages/index/index">登录</view>
   </view>
   <view class="agreement" bindtap="isCheck">
     <image src="../../images/xy01.png" wx:if="{{isChoose}}" ></image>

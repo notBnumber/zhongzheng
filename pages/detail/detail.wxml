@@ -4,7 +4,7 @@
     <swiper autoplay="{{autoplay}}" interval="{{interval}}">
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" />
+          <image src="{{item}}" class="slide-image" bindtap="previewImg" data-url="{{item}}"/>
           <view class="ind df" hover-class="none" hover-stop-propagation="false">
             {{imgUrls.length}}/{{index}}
           </view>

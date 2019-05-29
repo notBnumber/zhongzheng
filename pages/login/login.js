@@ -14,8 +14,13 @@ Page({
     })
   },
   pageTo({currentTarget: {dataset}}){
-    // console.log(dataset);
+    console.log(dataset);
     wx.navigateTo({
+      url: dataset.url
+    })
+  },
+  pageToIndex({currentTarget: {dataset}}){
+    wx.switchTab({
       url: dataset.url
     })
   },

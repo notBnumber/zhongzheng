@@ -58,7 +58,7 @@ Page({
     ],
     priceList: [
       {
-        name: "价格",
+        name: "设置预算",
         list: [
           { name: "不限" },
           { name: "5000元以下/平方" },
@@ -140,16 +140,16 @@ quyuCheck:[
   check(e) {
     let index =  e.currentTarget.dataset.index
     console.log(index,this.data.openList);
-    
+
     if (this.data.currentState == 1) {
       this.setData({
         yusuan: this.data.openList[0].list[index].name
-  
+
       })
     } else if(this.data.currentState == 2){
       this.setData({
         mianjiplace: this.data.openList[0].list[index].name
-  
+
       })
     }
     this.setData({
@@ -186,7 +186,7 @@ quyuCheck:[
       sourceType: ['album', 'camera'],
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths 
+        const tempFilePaths = res.tempFilePaths
         console.log(tempFilePaths,'图片数组');
         let arr = that.data.imgUrl.concat(tempFilePaths)
         that.setData({
@@ -228,7 +228,7 @@ quyuCheck:[
     let index = ''
     if (state != null) {
       console.log('初始化');
-      
+
       // index = e.currentTarget.dataset.index
     this.setData({
       quyuIndex:0,
@@ -236,20 +236,20 @@ quyuCheck:[
     })
     } else {
       console.log('左边');
-      
+
       index = e.currentTarget.dataset.index
       this.setData({
         quyuIndex:index,
         // quyuRight:this.data.quyuList[index].list
       })
       console.log(this.data.quyuList[this.data.quyuIndex]);
-      
+
     }
   },
     // 区域右边
     checkQuyuRight(e) {
       let state = e.currentTarget.dataset.index
-      
+
       let arr = []
       this.data.quyuList[this.data.quyuIndex].list[state].state= !this.data.quyuList[this.data.quyuIndex].list[state].state
       for(let item of this.data.quyuList) {
@@ -261,31 +261,31 @@ quyuCheck:[
         quyuList:this.data.quyuList,
         quyuCheck:arr
       })
-  
+
     },
       // 区域删除
   del(e) {
     let state = e.currentTarget.dataset.index
     let id = e.currentTarget.dataset.id
     console.log(id);
-    
+
     this.data.quyuCheck = this.data.quyuCheck.filter(
       (item, index, arr) => index!=state
     );
     for(let item of this.data.quyuList) {
       for(let y in item.list) {
         console.log(item.list[y].id,"?????");
-        
+
         if(id == item.list[y].id){
           console.log(item.list[y]);
-          
+
           item.list[y].state = false
           // item.list[y].splice(y,1)
         }
       }
     }
     console.log(this.data.quyuList);
-    
+
     this.setData({
       quyuCheck:this.data.quyuCheck,
       quyuList:this.data.quyuList
@@ -300,7 +300,7 @@ quyuCheck:[
       }
     }
     console.log(this.data.quyuList);
-    
+
     this.setData({
       quyuList:this.data.quyuList,
       quyuCheck:[]

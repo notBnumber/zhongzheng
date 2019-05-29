@@ -9,12 +9,16 @@
     <image class="img" src="../../../images/bg.png"></image>
     <view class="details" style="padding-top: {{ 100 + height*2}}rpx">
       <view class="balance">
-        <test>余额</test>
-        <image src="../../../images/gc01.png" bindtap="Invitation"></image>
+        <text>余额</text>
+        <view>
+          <image src="../../../images/gc01.png" bindtap="Invitation"></image>
+          <view class="text">提现需要到APP</view>
+        </view>
+
       </view>
       <view class="withdrawal">
          <test>￥100.12</test>
-         <button plain bindtap="cashTap">提现</button>
+         <!-- <button plain bindtap="cashTap">提现</button> -->
       </view>
     </view>
   </view>

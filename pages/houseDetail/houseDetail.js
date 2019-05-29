@@ -178,13 +178,25 @@ quyuCheck:[
       }
     ],
   },
+  // 房屋详情
+  toDetail(e) {
+    console.log(e.currentTarget.dataset);
+
+    wx.navigateTo({
+      url: "../detail/detail?id=" + e.currentTarget.dataset.id
+    });
+  },
+  //预览轮播图
+  previewImg(e){
+    console.log(e);
+  },
   // 区域左边
   checkQuyu(e,state) {
     console.log(e,state);
     let index = ''
     if (state != null) {
       console.log('初始化');
-      
+
       // index = e.currentTarget.dataset.index
     this.setData({
       quyuIndex:0,
@@ -192,20 +204,20 @@ quyuCheck:[
     })
     } else {
       console.log('左边');
-      
+
       index = e.currentTarget.dataset.index
       this.setData({
         quyuIndex:index,
         // quyuRight:this.data.quyuList[index].list
       })
       console.log(this.data.quyuList[this.data.quyuIndex]);
-      
+
     }
   },
   // 区域右边
   checkQuyuRight(e) {
     let state = e.currentTarget.dataset.index
-    
+
     let arr = []
     this.data.quyuList[this.data.quyuIndex].list[state].state= !this.data.quyuList[this.data.quyuIndex].list[state].state
     for(let item of this.data.quyuList) {
@@ -224,24 +236,24 @@ quyuCheck:[
     let state = e.currentTarget.dataset.index
     let id = e.currentTarget.dataset.id
     console.log(id);
-    
+
     this.data.quyuCheck = this.data.quyuCheck.filter(
       (item, index, arr) => index!=state
     );
     for(let item of this.data.quyuList) {
       for(let y in item.list) {
         console.log(item.list[y].id,"?????");
-        
+
         if(id == item.list[y].id){
           console.log(item.list[y]);
-          
+
           item.list[y].state = false
           // item.list[y].splice(y,1)
         }
       }
     }
     console.log(this.data.quyuList);
-    
+
     this.setData({
       quyuCheck:this.data.quyuCheck,
       quyuList:this.data.quyuList
@@ -255,7 +267,7 @@ quyuCheck:[
       }
     }
     console.log(this.data.quyuList);
-    
+
     this.setData({
       quyuList:this.data.quyuList,
       quyuCheck:[]
@@ -268,23 +280,23 @@ quyuCheck:[
     })
   },
   // 其他左边选项
-  checkSpecial (e) {    
+  checkSpecial (e) {
     console.log(e,'其他');
-    
+
     let state = e.currentTarget.dataset.index == undefined?0:e.currentTarget.dataset.index
     this.setData({
       specialIndex:state,
       specialRight:this.data.specialList[state].list
     })
     console.log(this.data.specialRight);
-    
+
   },
   // 其他右边选项
   checkRight(e) {
     let state = e.currentTarget.dataset.index
     console.log(this.data.specialRight[state].state);
     // this.setData({
-    //   specialIndexs:state    
+    //   specialIndexs:state
     // })
     this.data.specialRight[state].state = !this.data.specialRight[state].state
     this.setData({
@@ -305,7 +317,7 @@ quyuCheck:[
       }
     }
     console.log(this.data.specialList);
-    
+
     this.setData({
       specialList:this.data.specialList
     })

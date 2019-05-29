@@ -33,7 +33,7 @@ Page({
       isshoucang:!this.data.isshoucang
     })
     console.log(this.data.isshoucang);
-    
+
   },
   getAddress() {
     let latitude  = wx.getStorageSync('latitude')
@@ -44,7 +44,7 @@ Page({
       scale: 18
     })
     // wx.getLocation({//获取当前经纬度
-    //   type: 'wgs84', //返回可以用于wx.openLocation的经纬度，官方提示bug: iOS 6.3.30 type 参数不生效，只会返回 wgs84 类型的坐标信息  
+    //   type: 'wgs84', //返回可以用于wx.openLocation的经纬度，官方提示bug: iOS 6.3.30 type 参数不生效，只会返回 wgs84 类型的坐标信息
     //   success: function (res) {
     //     wx.openLocation({//​使用微信内置地图查看位置。
     //       latitude: 22.5542080000,//要去的纬度-地址
@@ -55,12 +55,19 @@ Page({
     //   }
     // })
   },
+  //预览轮播图
+  previewImg(e){
+    wx.previewImage({
+      current: e.currentTarget.dataset.url, // 当前显示图片的http链接
+      urls: this.data.imgUrls // 需要预览的图片http链接列表
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options);
-    
+
   },
 
   /**
