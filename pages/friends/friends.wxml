@@ -169,7 +169,7 @@
     </view>
   </view>
   <input class="inp" value="" type="text" placeholder="请输入与被推荐人关系" placeholder-style="" placeholder-class="input-placeholders"></input>
-  <view class="btn df" hover-class="none" hover-stop-propagation="false">
+  <view class="btn df" hover-class="none" hover-stop-propagation="false" bindtap='submit'>
     提交客源
   </view>
 </view>

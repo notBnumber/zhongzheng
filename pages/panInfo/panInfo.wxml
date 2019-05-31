@@ -46,7 +46,7 @@
       </view>
     </view>
   </view>
-  <view class="btn df" hover-class="none" hover-stop-propagation="false">
-    提交房源
+  <view class="btn df" hover-class="none" hover-stop-propagation="false" catchtap='submit'>
+    提交盘源
   </view>
 </view>

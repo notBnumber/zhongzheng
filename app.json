@@ -4,14 +4,17 @@
     "pages/detail/detail",
     "pages/houseDetail/houseDetail",
     "pages/panInfo/panInfo",
+    "pages/panResult/panResult",
     "pages/tuike/index",
     "pages/tuipan/index",
     "pages/friends/friends",
+    "pages/friendsResult/friendsResult",
     "pages/find/find",
     "pages/logs/logs",
     "pages/ptInfo/ptInfo",
     "pages/msg/msg",
     "pages/result/result",
+    "pages/results/results",
     "pages/register/register",
     "pages/registerText/registerText",
     "pages/login/login",
@@ -34,7 +37,8 @@
     "pages/my/feedback/feedback",
     "pages/my/help/help",
     "pages/my/collection/collection",
-    "pages/my/team/team"
+    "pages/my/team/team",
+    "pages/component/component"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -48,8 +52,7 @@
     "backgroundColor": "#fff",
     "position": "bottom",
     "borderStyle": "black",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "./images/sy01.png",
@@ -73,6 +76,5 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

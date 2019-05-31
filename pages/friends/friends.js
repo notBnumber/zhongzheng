@@ -4,10 +4,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    yusuan:'请选择设置预算',
-    mianjiplace:'请选择意向面积',
-    currentState:null,
-    show:false,
+    yusuan: "请选择设置预算",
+    mianjiplace: "请选择意向面积",
+    currentState: null,
+    show: false,
     typesList: [
       {
         name: "二手房"
@@ -53,12 +53,10 @@ Page({
     typesIndex: 0,
     numberIndex: 0,
     state: 0,
-    imgUrl: [
-
-    ],
+    imgUrl: [],
     priceList: [
       {
-        name: "价格",
+        name: "设置预算",
         list: [
           { name: "不限" },
           { name: "5000元以下/平方" },
@@ -78,57 +76,55 @@ Page({
         ]
       }
     ],
-    openList:[],
-    specialName:null,
-    quyuIndex:0,
-quyuIndexs:0,
-quyuRight:[],
-// 选中的
-quyuCheck:[
-
-],
-    quyuList:[
+    openList: [],
+    specialName: null,
+    quyuIndex: 0,
+    quyuIndexs: 0,
+    quyuRight: [],
+    // 选中的
+    quyuCheck: [],
+    quyuList: [
       {
-        name:'其他',
-        list:[
+        name: "其他",
+        list: [
           {
-            name:'不限',
-            state:false,
-            id:1
+            name: "不限",
+            state: false,
+            id: 1
           },
           {
-            name:'不限',
-            state:false,
-            id:2
+            name: "不限",
+            state: false,
+            id: 2
           },
           {
-            name:'不限',
-            state:false,
-            id:3
+            name: "不限",
+            state: false,
+            id: 3
           },
           {
-            name:'教育房产',
-            state:false,
-            id:4
+            name: "教育房产",
+            state: false,
+            id: 4
           }
         ]
       },
       {
-        name:'用途',
-        list:[
+        name: "用途",
+        list: [
           {
-            name:'别墅',
-            state:false,
-            id:5
+            name: "别墅",
+            state: false,
+            id: 5
           },
           {
-            name:'特价房',
-            state:false,
-            id:6
+            name: "特价房",
+            state: false,
+            id: 6
           }
         ]
       }
-    ],
+    ]
   },
   //关闭弹框
   onClose() {
@@ -138,24 +134,21 @@ quyuCheck:[
   },
   // 选中关闭弹框
   check(e) {
-    let index =  e.currentTarget.dataset.index
-    console.log(index,this.data.openList);
-    
+    let index = e.currentTarget.dataset.index;
+    console.log(index, this.data.openList);
+
     if (this.data.currentState == 1) {
       this.setData({
         yusuan: this.data.openList[0].list[index].name
-  
-      })
-    } else if(this.data.currentState == 2){
+      });
+    } else if (this.data.currentState == 2) {
       this.setData({
         mianjiplace: this.data.openList[0].list[index].name
-  
-      })
+      });
     }
     this.setData({
-      show:!this.data.show,
-
-    })
+      show: !this.data.show
+    });
   },
   checkTypes(e) {
     console.log(e);
@@ -179,137 +172,142 @@ quyuCheck:[
     });
   },
   chooseImg() {
-    let that = this
+    let that = this;
     wx.chooseImage({
-      count: 5-that.data.imgUrl.length,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
+      count: 5 - that.data.imgUrl.length,
+      sizeType: ["original", "compressed"],
+      sourceType: ["album", "camera"],
       success(res) {
         // tempFilePath可以作为img标签的src属性显示图片
-        const tempFilePaths = res.tempFilePaths 
-        console.log(tempFilePaths,'图片数组');
-        let arr = that.data.imgUrl.concat(tempFilePaths)
+        const tempFilePaths = res.tempFilePaths;
+        console.log(tempFilePaths, "图片数组");
+        let arr = that.data.imgUrl.concat(tempFilePaths);
         that.setData({
-          imgUrl:arr
-        })
+          imgUrl: arr
+        });
       }
-    })
+    });
   },
   // 预算
   money(e) {
     console.log(e.currentTarget.dataset.id);
     this.setData({
-      show:!this.data.show,
-      openList:this.data.priceList,
-      currentState:e.currentTarget.dataset.id
-    })
+      show: !this.data.show,
+      openList: this.data.priceList,
+      currentState: e.currentTarget.dataset.id
+    });
   },
-    // 面积
-    mianji(e) {
-      console.log(e.currentTarget.dataset.id);
-      this.setData({
-        show:!this.data.show,
-        openList:this.data.mianjiList,
-        currentState:e.currentTarget.dataset.id
-      })
-    },
-    // 区域
-    quyu(e) {
-      this.setData({
-        currentState:0,
-        show: !this.data.show,
-        specialName:'意向区域',
-      });
-      this.checkQuyu(e,1)
-    },
-      // 区域左边
-  checkQuyu(e,state) {
-    console.log(e,state);
-    let index = ''
-    if (state != null) {
-      console.log('初始化');
-      
-      // index = e.currentTarget.dataset.index
+  // 面积
+  mianji(e) {
+    console.log(e.currentTarget.dataset.id);
     this.setData({
-      quyuIndex:0,
-      quyuRight:this.data.quyuList[0].list
-    })
-    } else {
-      console.log('左边');
-      
-      index = e.currentTarget.dataset.index
+      show: !this.data.show,
+      openList: this.data.mianjiList,
+      currentState: e.currentTarget.dataset.id
+    });
+  },
+  // 区域
+  quyu(e) {
+    this.setData({
+      currentState: 0,
+      show: !this.data.show,
+      specialName: "意向区域"
+    });
+    this.checkQuyu(e, 1);
+  },
+  // 区域左边
+  checkQuyu(e, state) {
+    console.log(e, state);
+    let index = "";
+    if (state != null) {
+      console.log("初始化");
+
+      // index = e.currentTarget.dataset.index
       this.setData({
-        quyuIndex:index,
+        quyuIndex: 0,
+        quyuRight: this.data.quyuList[0].list
+      });
+    } else {
+      console.log("左边");
+
+      index = e.currentTarget.dataset.index;
+      this.setData({
+        quyuIndex: index
         // quyuRight:this.data.quyuList[index].list
-      })
+      });
       console.log(this.data.quyuList[this.data.quyuIndex]);
-      
     }
   },
-    // 区域右边
-    checkQuyuRight(e) {
-      let state = e.currentTarget.dataset.index
-      
-      let arr = []
-      this.data.quyuList[this.data.quyuIndex].list[state].state= !this.data.quyuList[this.data.quyuIndex].list[state].state
-      for(let item of this.data.quyuList) {
-        for(let items of item.list) {
-          arr.push(items)
-        }
+  // 区域右边
+  checkQuyuRight(e) {
+    let state = e.currentTarget.dataset.index;
+
+    let arr = [];
+    this.data.quyuList[this.data.quyuIndex].list[state].state = !this.data
+      .quyuList[this.data.quyuIndex].list[state].state;
+    for (let item of this.data.quyuList) {
+      for (let items of item.list) {
+        arr.push(items);
       }
-      this.setData({
-        quyuList:this.data.quyuList,
-        quyuCheck:arr
-      })
-  
-    },
-      // 区域删除
+    }
+    this.setData({
+      quyuList: this.data.quyuList,
+      quyuCheck: arr
+    });
+  },
+  // 区域删除
   del(e) {
-    let state = e.currentTarget.dataset.index
-    let id = e.currentTarget.dataset.id
+    let state = e.currentTarget.dataset.index;
+    let id = e.currentTarget.dataset.id;
     console.log(id);
-    
+
     this.data.quyuCheck = this.data.quyuCheck.filter(
-      (item, index, arr) => index!=state
+      (item, index, arr) => index != state
     );
-    for(let item of this.data.quyuList) {
-      for(let y in item.list) {
-        console.log(item.list[y].id,"?????");
-        
-        if(id == item.list[y].id){
+    for (let item of this.data.quyuList) {
+      for (let y in item.list) {
+        console.log(item.list[y].id, "?????");
+
+        if (id == item.list[y].id) {
           console.log(item.list[y]);
-          
-          item.list[y].state = false
+
+          item.list[y].state = false;
           // item.list[y].splice(y,1)
         }
       }
     }
     console.log(this.data.quyuList);
-    
+
     this.setData({
-      quyuCheck:this.data.quyuCheck,
-      quyuList:this.data.quyuList
-    })
+      quyuCheck: this.data.quyuCheck,
+      quyuList: this.data.quyuList
+    });
   },
   // 重置
   resetQuyu(e) {
-    for(let item of this.data.quyuList) {
-      for (let items of item.list ) {
+    for (let item of this.data.quyuList) {
+      for (let items of item.list) {
         console.log(items);
-        items.state = false
+        items.state = false;
       }
     }
     console.log(this.data.quyuList);
-    
+
     this.setData({
-      quyuList:this.data.quyuList,
-      quyuCheck:[]
-    })
-    this.checkQuyu(e,2)
+      quyuList: this.data.quyuList,
+      quyuCheck: []
+    });
+    this.checkQuyu(e, 2);
   },
   btnQuyu() {
     this.setData({
-      show:!this.data.show
+      show: !this.data.show
+    });
+  },
+  // 提交
+  submit() {
+    wx.navigateTo({
+      url: '../friendsResult/friendsResult'
     })
   },
   /**

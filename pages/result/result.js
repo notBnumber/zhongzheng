@@ -11,10 +11,10 @@ Page({
         name:'新房'
       },
       {
-        name:'租房'
+        name:'二手房'
       },
       {
-        name:'二手房'
+        name:'租房'
       }
     ],
     isSearch:false,
@@ -206,7 +206,7 @@ quyuCheck:[
   },
   // 下拉
   selects() {
-    if (this.data.options.state == 1) {
+    if (this.data.options.state == 3) {
       this.setData({
         isSelect:!this.data.isSelect
       })
@@ -217,9 +217,10 @@ quyuCheck:[
   // 选中下拉框
   checkSelect(e) {
     this.setData({
-      check:e.currentTarget.dataset.name,
-      isSelect:!this.data.isSelect
+      isSelect:!this.data.isSelect,
+      check:e.currentTarget.dataset.name
     })
+    
   },
   filter(e) {
     let state = e.currentTarget.dataset.index
@@ -398,9 +399,15 @@ quyuCheck:[
     this.setData({
       options:options
     })
-    if (options.state != 1) {
+    console.log(options);
+    
+    if (options.state == 3) {
       this.setData({
-        check:options.name
+        check:this.data.list[0].name
+      })
+    } else {
+      this.setData({
+        check:this.data.list[options.state].name
       })
     }
   },

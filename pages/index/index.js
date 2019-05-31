@@ -120,7 +120,7 @@ Page({
   // 搜索页面
   toReault() {
     wx.navigateTo({
-      url: "../result/result?state=1"
+      url: "../result/result?state=3"
     });
   },
   onLoad: function() {

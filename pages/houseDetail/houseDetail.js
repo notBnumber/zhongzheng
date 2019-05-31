@@ -4,6 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    optionState:null,
     currentState:null,
     autoplay: true,
     interval: 5000,
@@ -177,6 +178,12 @@ quyuCheck:[
         ]
       }
     ],
+  },
+  toReault(e) {
+    console.log(e.currentTarget.dataset.state,'自定义参数');
+    wx.navigateTo({
+      url: '../result/result?state='+e.currentTarget.dataset.state
+    })
   },
   // 房屋详情
   toDetail(e) {
@@ -391,7 +398,9 @@ quyuCheck:[
   onLoad: function(options) {
     console.log(options);
     // this.data.tabList.splice(2, 0, { name: "房型" });
-
+    this.setData({
+      optionState:options.index
+    })
     if (options.index == 0) {
       wx.setNavigationBarTitle({
         title: "新房"
@@ -410,7 +419,9 @@ quyuCheck:[
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {},
+  onReady: function() {
+
+  },
 
   /**
    * 生命周期函数--监听页面显示

@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 18,
 			"list": [
 				{
 					"id": -1,
@@ -137,6 +137,40 @@
 					"name": "房源类型详情",
 					"pathName": "pages/chooseCity/chooseCity",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "实名认证",
+					"pathName": "pages/my/realNameAuthentication/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "房源搜索结果",
+					"pathName": "pages/results/results",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "房源搜索结果",
+					"pathName": "pages/houseDetail/houseDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "组件",
+					"pathName": "pages/component/component",
 					"scene": null
 				}
 			]

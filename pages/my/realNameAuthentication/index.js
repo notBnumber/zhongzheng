@@ -1,4 +1,5 @@
 // pages/my/realNameAuthentication/index.js
+import Dialog from '../../../vant/dialog/dialog';
 Page({
 
   /**
@@ -9,6 +10,16 @@ Page({
     cardText:'',
     tempFileOne:'../../../images/sm501.png',
     tempFileSecond:'../../../images/sm502.png',
+  },
+  changeName(e) {
+    this.setData({
+      realName:e.detail.value
+    })
+  },
+  changeCard(e) {
+    this.setData({
+      cardText:e.detail.value
+    })
   },
   upLoader(e){
     let that=this;
@@ -41,7 +52,51 @@ Page({
     })
   },
   tapNext(e){
-    wx.navigateTo({ url: '../addBankCard/index' });
+    console.log(this.data.realName);
+    
+    if (this.data.realName  == '') {
+      wx.showToast({
+        title: '请输入姓名',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false
+      });
+      return false
+    } 
+    if (this.data.cardText  == '') {
+      wx.showToast({
+        title: '请输入身份证号',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false
+      });
+      return false
+    } 
+    if (!(/^\d{15}|\d{}18$ /.test(this.data.cardText))) {
+
+      wx.showToast({
+        title: '请输入正确的身份证号',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false
+      });
+      
+      return false;
+      
+      }
+
+    Dialog.confirm({
+      title: '确定认证吗?',
+      message: '(一旦认证,无法更改)'
+    }).then(() => {
+      wx.navigateTo({ url: '../addBankCard/index' });
+      // on confirm
+    }).catch(() => {
+      // on cancel
+    });
   },
 
   /**

@@ -50,6 +50,12 @@ Page({
 
     ]
   },
+  // 提交
+  submit() {
+    wx.navigateTo({
+      url: '../panResult/panResult'
+    })
+  },
   checkTypes(e) {
     console.log(e);
 

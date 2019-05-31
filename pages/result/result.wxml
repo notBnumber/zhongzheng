@@ -111,12 +111,12 @@
         </view>
       <image class="" src="../../images/sj.png"></image>
         </view>
-        <view class="select" hover-class="none" hover-stop-propagation="false" wx:if="{{isSelect == true}}">
+        <view class="select" hover-class="none" hover-stop-propagation="false" wx:if="{{isSelect}}">
           <image class="" src="../../images/dbx01.png" >
             
           </image>
           <view class="selectItem" hover-class="none" hover-stop-propagation="false" >
-            <view class="iii" hover-class="none" hover-stop-propagation="false" wx:for="{{list}}" data-name="{{item.name}}" bindtap="checkSelect">
+            <view class="iii" hover-class="none" hover-stop-propagation="false" wx:for="{{list}}" data-name="{{item.name}}" catchtap="checkSelect">
               {{item.name}}
             </view>
           </view>
@@ -155,7 +155,7 @@
       </view>
     </view>
   </view>
-    <view class="contents pad0" hover-class="none" hover-stop-propagation="false" wx:if="{{isSearch == true}}">
+    <view class="contents pad0" hover-class="none" hover-stop-propagation="false" wx:if="{{isSearch}}">
       <view class="tab" hover-class="none" hover-stop-propagation="false">
     <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{tabList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='filter'>
       <view class="itemP" hover-class="none" hover-stop-propagation="false">

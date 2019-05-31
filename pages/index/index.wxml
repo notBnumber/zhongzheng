@@ -18,7 +18,7 @@
     <!-- <input type="text"> -->
     <view class="inp" hover-class="none" hover-stop-propagation="false">
       <image class="" src="../../images/ss01.png"></image>
-      <input class="" value="" type="text" placeholder="请输入楼盘" placeholder-class="input-placeholder"></input>
+      <input class=""  value="" type="text" placeholder="请输入楼盘" placeholder-class="input-placeholder" disabled="{{true}}" ></input>
     </view>
   </view>
   <!-- 轮播图 -->
