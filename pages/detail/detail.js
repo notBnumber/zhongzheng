@@ -36,13 +36,67 @@ Page({
 
   },
   getAddress() {
-    let latitude  = wx.getStorageSync('latitude')
+    let latitude  =    wx.getStorageSync('latitude')
     let longitude  = wx.getStorageSync('longitude')
-    wx.openLocation({
-      latitude,
-      longitude,
-      scale: 18
-    })
+    console.log(latitude,longitude);
+    
+    if(latitude == '' || longitude == '') {
+      // wx.getLocation({
+      //   type: 'wgs84',
+      //   success(res) {
+      //     const latitude = res.latitude
+      //     const longitude = res.longitude
+      //     const speed = res.speed
+      //     const accuracy = res.accuracy
+      //     wx.setStorageSync('latitude', latitude)
+      //     wx.setStorageSync('longitude', longitude)
+
+      //   }
+      // })
+      wx.openSetting({
+        success: function (dataAu) {
+          console.log(dataAu)
+          if (dataAu.authSetting["scope.userLocation"] == true) {
+            wx.showToast({
+              title: '授权成功',
+              icon: 'success',
+              duration: 1000
+            })
+            //再次授权，调用getLocationt的API
+            // that.getLocation(that);
+            wx.getLocation({
+              type: "wgs84",
+              success(res) {
+                const latitude = res.latitude;
+                const longitude = res.longitude;
+                const speed = res.speed;
+                const accuracy = res.accuracy;
+                wx.setStorageSync("latitude", latitude);
+                wx.setStorageSync("longitude", longitude);
+    
+              }
+            });
+          } else {
+            wx.showToast({
+              title: '授权失败',
+              icon: 'success',
+              duration: 1000
+            })
+          }
+        }
+      })
+    } else {
+      wx.openLocation({
+        latitude,
+        longitude,
+        scale: 18
+      })
+    }
+    // let latitude  =    parseFloat (wx.getStorageSync('latitude'))
+    // let longitude  = parseFloat (wx.getStorageSync('longitude'))
+    
+    
+    
     // wx.getLocation({//获取当前经纬度
     //   type: 'wgs84', //返回可以用于wx.openLocation的经纬度，官方提示bug: iOS 6.3.30 type 参数不生效，只会返回 wgs84 类型的坐标信息
     //   success: function (res) {

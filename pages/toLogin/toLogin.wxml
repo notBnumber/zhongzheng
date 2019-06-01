@@ -1,7 +1,7 @@
 <view wx:if="{{canIUse}}">
-    <view class='header'>
+    <!-- <view class='header'>
         <image src='../../images/bz01.png'></image>
-    </view>
+    </view> -->
 
     <view class='content'>
         <view>仲达网申请获取以下权限</view>
