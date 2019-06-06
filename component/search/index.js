@@ -17,7 +17,6 @@ Component({
     this.setData({
       optionState: this.data.optionState
     });
-    console.log(this.data.optionState, "kkkkk");
   },
   methods: {
     // 这里是一个自定义方法
