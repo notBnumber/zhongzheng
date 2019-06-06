@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 24,
+			"current": 25,
 			"list": [
 				{
 					"id": -1,
@@ -213,6 +213,13 @@
 					"id": -1,
 					"name": "添加银行卡",
 					"pathName": "pages/my/addBankCard/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "组件",
+					"pathName": "pages/component/component",
 					"query": "",
 					"scene": null
 				}

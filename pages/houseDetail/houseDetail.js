@@ -211,10 +211,9 @@ Page({
     ]
   },
   toReault(e) {
-    console.log(e.currentTarget.dataset.state, "自定义参数");
-    wx.navigateTo({
-      url: "../result/result?state=" + e.currentTarget.dataset.state
-    });
+    // wx.navigateTo({
+    //   url: "../result/result?state=" + e.currentTarget.dataset.state
+    // });
   },
   // 房屋详情
   toDetail(e) {
@@ -455,6 +454,8 @@ Page({
     this.setData({
       optionState: options.index
     });
+    console.log(this.data.optionState,'斤斤计较军军军军军军军军军军军军军军军军');
+    
     if (options.index == 0) {
       wx.setNavigationBarTitle({
         title: "新房"

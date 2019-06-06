@@ -23,7 +23,7 @@ Component({
    */
   attached: function () {
    // 将外部传入的值复制给value，当然也可以直接使用key值
-   console.log('eeee');
+   console.log(this.data.key);
    
     this.setData({
       value: this.data.key
