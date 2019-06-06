@@ -38,7 +38,6 @@ Component({
       url: "/pages/result/result?state=" + this.data.optionState
     });
     }
-    
   },
   onLoad() {
     
