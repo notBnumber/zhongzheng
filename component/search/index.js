@@ -3,30 +3,29 @@ Component({
     // 这里定义了innerText属性，属性值可以在组件使用时指定
     optionState: {
       type: String,
-      value: 'default value',
+      value: "default value"
     }
   },
   data: {
     // 这里是一些组件内部数据
     someData: {}
   },
-  attached: function () {
+  attached: function() {
     // 将外部传入的值复制给value，当然也可以直接使用key值
-    console.log('eeee',this.data.optionState,9099989);
-    
-     this.setData({
+    console.log("eeee", this.data.optionState, 9099989);
+
+    this.setData({
       optionState: this.data.optionState
-     })
-     console.log(this.data.optionState,'kkkkk');
-     
-   },
+    });
+    console.log(this.data.optionState, "kkkkk");
+  },
   methods: {
     // 这里是一个自定义方法
-    customMethod: function(){},
+    customMethod: function() {},
     // toResult() {
     //   this.triggerEvent('myevent', {
     //     optionState: '李四'
-    //   })      
+    //   })
     // },
     toCity() {
       wx.navigateTo({
@@ -34,12 +33,10 @@ Component({
       });
     },
     toResult() {
-    wx.navigateTo({
-      url: "/pages/result/result?state=" + this.data.optionState
-    });
+      wx.navigateTo({
+        url: "/pages/result/result?state=" + this.data.optionState
+      });
     }
   },
-  onLoad() {
-    
-  }
-})
+  onLoad() {}
+});
