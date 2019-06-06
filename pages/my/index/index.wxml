@@ -3,10 +3,10 @@
     <image class="img" src="../../../images/tb04.png"></image>
     <view class="details" bindtap="pageTo" data-url="/pages/my/myinfo/index">
       <view class="left">
-        <image class="head" src="../../../images/tx04.png"></image>
+        <image class="head" src="{{info.avatar}}"></image>
         <view class="name">
-          <view>用户昵称 <test catchtap="Invitation">邀请</test></view>
-          <view>邀请码：123465</view>
+          <view>{{info.nick == null?'用户昵称':info.nick}} <test catchtap="Invitation">邀请</test></view>
+          <view>邀请码：{{info.invitationCode==undefined?'':info.invitationCode}}</view>
         </view>
       </view>
       <image class="arrIcon" src="../../../images/xy08.png"></image>

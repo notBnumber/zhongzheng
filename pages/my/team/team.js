@@ -1,4 +1,7 @@
 // pages/my/team/team.js
+const util = require("../../../utils/util.js");
+const app = getApp();
+
 Page({
 
   /**
@@ -6,7 +9,10 @@ Page({
    */
   data: {
     isProup: false,
-    num:true
+    num:true,
+    caption:{},
+    teams:{},
+    imgUrl:null
   },
   goInvite(){
     this.setData({
@@ -32,7 +38,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    Promise.all([
+      util._get("account/getTeam?sessionId=" + wx.getStorageSync("sessionId")),
+      util._get("account/getTeam2?sessionId=" + wx.getStorageSync("sessionId")),
+    ])
+      .then(result => {
+        this.setData({
+          imgUrl: app.globalData.imgUrl,
+          caption:result[0].data,
+          teams:result[1].data
+        });
+      })
+      .catch(e => {
+        console.log(e);
+      });
   },
 
   /**

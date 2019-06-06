@@ -1,22 +1,33 @@
 // pages/panInfo/panInfo.js
+const util = require("../../utils/util.js");
+
 Page({
   /**
    * 页面的初始数据
    */
   data: {
+    ids:'',
+    relation:'',
+    title:'',
+    name:'',
+    phone:'',
     yusuan: "请选择设置预算",
     mianjiplace: "请选择意向面积",
+    yusuanId:null,
+    mainjiId:null,
+    numberIndexId:null,
     currentState: null,
+    stateId:null,
     show: false,
     typesList: [
+      {
+        name: "新房"
+      },
       {
         name: "二手房"
       },
       {
         name: "租房"
-      },
-      {
-        name: "新房"
       }
     ],
     stateList: [
@@ -29,26 +40,33 @@ Page({
     ],
     numberList: [
       {
-        name: "不限"
+        id: 0,
+        value:'不限'
       },
       {
-        name: "一室"
+        id: 1,
+        value:'一室'
       },
       {
-        name: "二室"
+        id: 2,
+        value:'一室'
       },
       {
-        name: "三室"
+        id: 3,
+        value:'一室'
       },
       {
-        name: "四室"
+        id: 4,
+        value:'四室'
       },
       {
-        name: "五室"
+        id: 5,
+        value:'五室'
       },
       {
-        name: "六室及以上"
-      }
+        id: 6,
+        value:'六室'
+      },
     ],
     typesIndex: 0,
     numberIndex: 0,
@@ -126,6 +144,16 @@ Page({
       }
     ]
   },
+  chooseName(e) {
+    this.setData({
+      name:e.detail.value
+    })
+  },
+  choosePhone(e) {
+    this.setData({
+      phone:e.detail.value
+    })
+  },
   //关闭弹框
   onClose() {
     this.setData({
@@ -139,11 +167,13 @@ Page({
 
     if (this.data.currentState == 1) {
       this.setData({
-        yusuan: this.data.openList[0].list[index].name
+        yusuan: this.data.openList[index].value,
+        yusuanId:this.data.openList[index].id
       });
     } else if (this.data.currentState == 2) {
       this.setData({
-        mianjiplace: this.data.openList[0].list[index].name
+        mianjiplace: this.data.openList[index].value,
+        mainjiId: this.data.openList[index].id
       });
     }
     this.setData({
@@ -161,7 +191,8 @@ Page({
     console.log(e);
 
     this.setData({
-      numberIndex: e.currentTarget.dataset.index
+      numberIndex: e.currentTarget.dataset.index,
+      numberIndexId:e.currentTarget.dataset.id
     });
   },
   checkState(e) {
@@ -190,21 +221,41 @@ Page({
   },
   // 预算
   money(e) {
+    // 新 二 租
     console.log(e.currentTarget.dataset.id);
-    this.setData({
-      show: !this.data.show,
-      openList: this.data.priceList,
-      currentState: e.currentTarget.dataset.id
-    });
+      util._get('configure/getbudget?type='+this.data.typesIndex).then(res=>{
+        if(res.code==1) {
+          this.setData({
+            show: !this.data.show,
+            openList: res.data,
+            currentState: e.currentTarget.dataset.id,
+            title:'设置预算'
+          });
+        }
+      })
+
+    
   },
   // 面积
   mianji(e) {
     console.log(e.currentTarget.dataset.id);
-    this.setData({
-      show: !this.data.show,
-      openList: this.data.mianjiList,
-      currentState: e.currentTarget.dataset.id
-    });
+    // this.setData({
+    //   show: !this.data.show,
+    //   openList: this.data.mianjiList,
+    //   currentState: e.currentTarget.dataset.id
+    // });
+
+
+    util._get('configure/getArea?type='+this.data.typesIndex).then(res=>{
+      if(res.code==1) {
+        this.setData({
+          show: !this.data.show,
+          openList: res.data,
+          currentState: e.currentTarget.dataset.id,
+          title:'面积'
+        });
+      }
+    })
   },
   // 区域
   quyu(e) {
@@ -304,11 +355,29 @@ Page({
       show: !this.data.show
     });
   },
+  chooseRelation(e) {
+    this.setData({
+      relation:e.detail.value
+    })
+  },
   // 提交
   submit() {
     wx.navigateTo({
       url: '../friendsResult/friendsResult'
     })
+    let params = {
+      sessionId:wx.getStorageSync('sessionId'),
+      recommendedPerson:this.data.name,
+      recommendedTele:this.data.phone,
+      intentionType:this.data.typesIndex,
+      budget:this.data.yusuanId,
+      area:this.data.mainjiId,
+      intentionUnit:this.data.numberIndexId,
+      State:this.data.state,
+      relation:this.data.relation,
+      intentionalRegionIds:this.data.ids
+    }
+    util._get('pusher/submitSource')
   },
   /**
    * 生命周期函数--监听页面加载

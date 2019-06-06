@@ -1,11 +1,14 @@
 // pages/my/addBankCard/index.js
+const util = require("../../../utils/util.js");
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    bankName:''
+    bankName:'',
+    bankNumber:'',
+    realName:''
   },
   submit(){
     wx.showToast({
@@ -18,6 +21,16 @@ Page({
         delta: 1
       })
     },1500)
+  },
+  chooseNumber(e) {
+    this.setData({
+      bankNumber:e.detail.value
+    })
+  },
+  chooseNumber(e) {
+    this.setData({
+      bankName:e.detail.value
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -37,7 +50,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 获取姓名
+    util._get('bank/card/getRealName?sessionId='+wx.getStorageSync('sessionId')).then(res=>{
+      if(res.code == 1) {
+        this.setData({
+          realName:res.data
+        })
+      }
+    })
   },
 
   /**

@@ -48,7 +48,13 @@ Page({
       //     }
       // });
       //授权成功后，跳转进入小程序首页
-
+      let InfoObj = {
+        nick:e.detail.userInfo.nickName,
+        avatar:e.detail.userInfo.avatarUrl
+      }
+      wx.setStorageSync('InfoObj', InfoObj)
+      // wx.setStorageSync('nick', e.detail.userInfo.nickName)
+      // wx.setStorageSync('avatarUrl', e.detail.userInfo.avatarUrl)
       wx.getLocation({
         type: "wgs84",
         success(res) {

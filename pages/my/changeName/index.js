@@ -1,24 +1,41 @@
 // pages/my/changeName/index.js
+const util = require("../../../utils/util.js");
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    nick:null
   },
-
-  submit(){
-    wx.showToast({
-      title: '保存成功',
-      icon: 'success',
-      duration: 1500
+  chooseNick(e) {
+    this.setData({
+      nick:e.detail.value
     })
-    setTimeout(()=>{
-      wx.navigateBack({
-        delta: 1
-      })
-    },1500)
+  },
+  submit(){
+    let params = {
+      sessionId:wx.getStorageSync('sessionId'),
+      nick:this.data.nick
+    }
+    util._get('account/modifyNick',params).then(res=>{
+      if(res.code == 1) {
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          duration: 1500
+        })
+        setTimeout(()=>{
+          wx.navigateBack({
+            delta: 1
+          })
+        },1500)
+      }
+    })
+
+
+    
   },
   /**
    * 生命周期函数--监听页面加载

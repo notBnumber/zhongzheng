@@ -84,7 +84,7 @@
     box-shadow: 0rpx 3rpx 7rpx 0rpx rgba(151, 155, 157, 0.15);
     margin-bottom: 21rpx;
     padding-bottom: 21rpx;
-
+    padding-right: 10rpx;
     .hotContentItemImg {
       width: 345rpx;
       height: 282rpx;
@@ -98,6 +98,7 @@
       font-weight: bold;
       color: rgba(41, 41, 41, 1);
       margin-top: 23rpx;
+      padding-left: 10rpx;
     }
 
     .address {
@@ -106,13 +107,17 @@
       font-family: PingFang-SC-Medium;
       font-weight: 500;
       color: rgba(164, 164, 164, 1);
+      padding-left: 10rpx;
     }
   }
 
   .biaoqianList {
+    padding-left: 10rpx;
+
     display: flex;
     margin-top: 19rpx;
-
+    align-items: center;
+    // flex-wrap: wrap;
     .biaoqian {
       width: 94rpx;
       height: 26rpx;
@@ -122,7 +127,7 @@
       font-family: PingFang-SC-Regular;
       font-weight: 400;
       color: rgba(60, 199, 162, 1);
-      margin-right: 20rpx;
+      margin-right: 10rpx;
     }
 
     .state1 {
@@ -162,19 +167,20 @@
     font-weight: bold;
     color: rgba(255, 76, 111, 1);
     margin-top: 15rpx;
+    padding-left: 10rpx;
   }
 
   .yongjin {
     margin-top: 27rpx;
     display: flex;
     align-items: center;
+    padding-left: 10rpx;
 
     .yongjinLeft {
       font-size: 28rpx;
       font-family: PingFang-SC-Regular;
       font-weight: bold;
       color: rgba(101, 101, 101, 1);
-      line-height: 36px;
     }
 
     .yongjinRight {

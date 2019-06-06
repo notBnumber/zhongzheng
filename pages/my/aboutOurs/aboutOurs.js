@@ -1,4 +1,7 @@
 // pages/my/aboutOurs/aboutOurs.js
+const WxParse = require('../../../wxParse/wxParse.js');
+const util = require("../../../utils/util.js");
+
 Page({
 
   /**
@@ -12,7 +15,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    util._get('configure/getAbout?sessionId='+wx.getStorageSync('sessionId')).then(res=> {
+      article_content:WxParse.wxParse('article_content', 'html', res.data.value, this, 5)
+    })
   },
 
   /**

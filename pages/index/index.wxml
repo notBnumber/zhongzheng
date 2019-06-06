@@ -10,15 +10,15 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view> -->
-  <view class="search " hover-class="none" hover-stop-propagation="false" bindtap = 'toReault'>
-    <view class="searchLeft" hover-class="none" hover-stop-propagation="false">
+  <view class="search " hover-class="none" hover-stop-propagation="false">
+    <view class="searchLeft" hover-class="none" hover-stop-propagation="false" bindtap='toCity'>
       <image class="" src="../../images/dw01.png"></image>
       <view class="" hover-class="none" hover-stop-propagation="false">广州</view>
     </view>
     <!-- <input type="text"> -->
-    <view class="inp" hover-class="none" hover-stop-propagation="false">
+    <view class="inp" hover-class="none" hover-stop-propagation="false" bindtap='toReault'>
       <image class="" src="../../images/ss01.png"></image>
-      <input class=""  value="" type="text" placeholder="请输入楼盘" placeholder-class="input-placeholder" disabled="{{true}}" ></input>
+      <input class="" value="" type="text" placeholder="请输入楼盘" placeholder-class="input-placeholder" disabled="{{true}}"></input>
     </view>
   </view>
   <!-- 轮播图 -->
@@ -26,7 +26,7 @@
     <swiper autoplay="{{autoplay}}" interval="{{interval}}" bindchange='swiperChange' circular>
       <block wx:for="{{imgUrls}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" />
+          <image src="{{imgUrl+item.image}}" mode='widthFix' class="slide-image" />
         </swiper-item>
       </block>
     </swiper>
@@ -53,23 +53,18 @@
     </view>
   </view>
   <!-- 文字轮播 -->
-
-
-   <swiper class='wordSwiper' indicator-dots="{{indicatorDots}}"
-  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical circular>
-  <block wx:for="{{list}}" wx:key="key">
-    <swiper-item>
-       <view class="word" hover-class="none" hover-stop-propagation="false">
-    <view class="wordLeft df" hover-class="none" hover-stop-propagation="false">{{item.title}}</view>
-    <view class="wordRight" hover-class="none" hover-stop-propagation="false">
-     {{item.content}}
-    </view>
-  </view>
-    </swiper-item>
-  </block>
-</swiper>
-
-
+  <swiper class='wordSwiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" vertical circular>
+    <block wx:for="{{list}}" wx:key="key">
+      <swiper-item>
+        <view class="word" hover-class="none" hover-stop-propagation="false">
+          <view class="wordLeft df" hover-class="none" hover-stop-propagation="false">购房</view>
+          <view class="wordRight" hover-class="none" hover-stop-propagation="false">
+            {{item.content}}
+          </view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
   <!-- 分割线 -->
   <view class="break" hover-class="none" hover-stop-propagation="false"></view>
   <!-- 热门推荐 -->
@@ -85,17 +80,39 @@
     </view>
     <view class="hotContent" hover-class="none" hover-stop-propagation="false">
       <view class="hotContentItem" hover-class="none" hover-stop-propagation="false" wx:for="{{hotList}}" wx:key="{{index}}" bindtap='toDetail' data-id='{{item.name}}'>
-        <image class="hotContentItemImg" src="{{item.img}}"></image>
-        <view class="name" hover-class="none" hover-stop-propagation="false">{{item.name}}</view>
-        <view class="address" hover-class="none" hover-stop-propagation="false">
-          {{item.address}}
+        <image class="hotContentItemImg" src="{{imgUrl+item.image}}"></image>
+        <view class="name" hover-class="none" hover-stop-propagation="false">
+          {{item.houseName}}
+        </view>
+        <view class="address" hover-class="none" hover-stop-propagation="false" wx:if="{{tabIndex == 0}}">
+          {{item.minArea}}-{{item.maxArea}}m² / {{item.address}}
+        </view>
+                <view class="address" hover-class="none" hover-stop-propagation="false" wx:if="{{tabIndex == 1}}">
+          {{item.area}}m² / {{item.address}}
+        </view>
+                        <view class="address" hover-class="none" hover-stop-propagation="false" wx:if="{{tabIndex == 2}}">
+          {{item.area}}m² / {{item.address}}
         </view>
         <view class="biaoqianList" hover-class="none" hover-stop-propagation="false">
-          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.list}}" wx:for-item="items">
-            {{items.name}}
+          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.tagArr}}" wx:for-item="items" wx:if="{{index<=2}}">
+            {{items}}
           </view>
         </view>
-        <view class="price" hover-class="none" hover-stop-propagation="false">{{item.price}}</view>
+        <view class="yongjin" hover-class="none" hover-stop-propagation="false" wx:if="{{tabIndex == 0}}">
+          <view class="yongjinLeft" hover-class="none" hover-stop-propagation="false">可获佣金：</view>
+          <view class="yongjinRight" hover-class="none" hover-stop-propagation="false">
+            总价*{{item.customerMoney}}%
+          </view>
+        </view>
+        <view class="price" hover-class="none" hover-stop-propagation="false" wx:if="{{tabIndex == 0}}">
+          {{item.unitPrice}}/平
+        </view>
+        <view class="price" hover-class="none" hover-stop-propagation="false" wx:if="{{tabIndex == 1}}">
+          {{item.totalPrice}}/万元
+        </view>
+                <view class="price" hover-class="none" hover-stop-propagation="false" wx:if="{{tabIndex == 2}}">
+          {{item.totalPrice}}元/月
+        </view>
       </view>
     </view>
   </view>

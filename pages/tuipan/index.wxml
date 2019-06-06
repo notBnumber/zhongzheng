@@ -1,7 +1,7 @@
 <view class="container">
   <view class="tabs" style="top: {{height}}px">
     <image src="../../images/arrIcon.png" bindtap="goback"></image>
-    <view  class='title'>推客</view>
+    <view  class='title'>推盘</view>
     <view class="white"></view>
   </view>
 

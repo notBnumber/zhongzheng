@@ -1,4 +1,5 @@
 // pages/my/help/help.js
+const util = require("../../../utils/util.js");
 Page({
 
   /**
@@ -7,10 +8,10 @@ Page({
   data: {
    currentIndex:null,
    dataList:[
-     { title: '问题沙发上', content: '发顺丰阿尔泰' },
-     { title: '放散阀', content: '阿芳阿芳答案' },
-     { title: '发斯蒂芬', content: '大萨达阿芳啊' },
-     {title: '范德萨发',content:'发发生态为'},
+    //  { title: '问题沙发上', content: '发顺丰阿尔泰' },
+    //  { title: '放散阀', content: '阿芳阿芳答案' },
+    //  { title: '发斯蒂芬', content: '大萨达阿芳啊' },
+    //  {title: '范德萨发',content:'发发生态为'},
    ]
   },
   solveTap(e){
@@ -39,7 +40,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    util._get('help/center/page?sessionId='+wx.getStorageSync('sessionId')).then(res=>{
+      if(res.code == 1) {
+        this.setData({
+          dataList:res.data
+        })
+      }
+    })
   },
 
   /**

@@ -277,6 +277,29 @@ swiper-item {
   margin-top: 19rpx;
 }
 
+.yongjin {
+  margin-top: 27rpx;
+  display: flex;
+  align-items: center;
+  padding-left: 10rpx;
+
+  
+
+  
+}
+.yongjinLeft {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: bold;
+  color: rgba(101, 101, 101, 1);
+}
+
+.yongjinRight {
+  font-size: 28rpx;
+  font-family: PingFang-SC-Regular;
+  font-weight: bold;
+  color: #FF4C6F;
+}
 .biaoqian {
   width: 94rpx;
   height: 26rpx;
@@ -323,7 +346,7 @@ swiper-item {
   font-family: PingFang-SC-Regular;
   font-weight: bold;
   color: rgba(255, 76, 111, 1);
-  margin-top: 29rpx;
+  margin-top: 15rpx;
   padding-left:10rpx;
 
 }
