@@ -8,7 +8,8 @@ Page({
   data: {
     bankName:'',
     bankNumber:'',
-    realName:''
+    realName:'',
+    state:null
   },
   submit(){
     wx.showToast({
