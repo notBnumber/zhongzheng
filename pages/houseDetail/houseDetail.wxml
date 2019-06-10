@@ -160,7 +160,7 @@
           {{item.unitPrice}}/平
         </view>
         <view class="price" hover-class="none" hover-stop-propagation="false" wx:if="{{optionState == 2}}">
-          {{item.zu}}
+          {{item.totalPrice}}元/月
         </view>
       </view>
     </view>

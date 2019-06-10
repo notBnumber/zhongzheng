@@ -1,6 +1,6 @@
 // pages/login/login.js
+const app = getApp();
 const util = require("../../utils/util.js");
-
 Page({
   /**
    * 页面的初始数据
@@ -12,7 +12,8 @@ Page({
     time: null,
     num: 60,
     code: null,
-    Invitation: null
+    Invitation: null,
+    fun:''
   },
   getPhone(e) {
     this.setData({
@@ -32,6 +33,7 @@ Page({
   },
   // 获取验证码
   getCode() {
+    
     if (this.data.num == 60) {
       let params = {
         mobile: this.data.phone
@@ -72,6 +74,7 @@ Page({
     }
   },
   toLogin() {
+    
     if(this.data.phone == '') {
       wx.showToast({
         title: "请输入手机号码",
@@ -153,7 +156,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {},
+  onLoad: function(options) {
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

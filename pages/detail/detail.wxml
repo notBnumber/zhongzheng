@@ -18,29 +18,37 @@
       <image class="" src="../../images/sc01.png" wx:elif="{{isshoucang == true}}"></image>
       <view class="" hover-class="none" hover-stop-propagation="false">收藏</view>
     </view>
-    <view class="name" hover-class="none" hover-stop-propagation="false">{{info.name}}</view>
-    <view class="title" hover-class="none" hover-stop-propagation="false">{{info.title}}</view>
-    <view class="number" hover-class="none" hover-stop-propagation="false">{{info.number}}</view>
+    <view class="name" hover-class="none" hover-stop-propagation="false">{{info.houseName}}</view>
+    <view class="title" hover-class="none" hover-stop-propagation="false">{{info.subheading}}</view>
+    <view class="number" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type == 0}}">{{info.minArea}}-{{info.maxArea}}m²</view>
+    <view class="number" hover-class="none" hover-stop-propagation="false"  wx:if="{{info.type == 1}}">{{info.area}}m²</view>
+
+    <view class="number" hover-class="none" hover-stop-propagation="false"  wx:if="{{info.type == 2}}">{{info.area}}m²</view>
+
     <view class="biaoqianList" hover-class="none" hover-stop-propagation="false">
-      <view class="biaoqian df {{item.state == 1?'state1':''}}  {{item.state == 2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{info.list}}">
-        {{item.name}}
+      <view class="biaoqian df {{item.state == 1?'state1':''}}  {{item.state == 2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{info.tagArr}}">
+        {{item}}
       </view>
     </view>
     <view class="Commission" hover-class="none" hover-stop-propagation="false">
       <view class="p1">可获佣金：</view>
-      <view class="p2">{{info.Commission}}</view>
+      <view class="p2" wx:if="{{info.type ==0}}">{{info.customerMoney}}</view>
     </view>
-    <view class="money" hover-class="none" hover-stop-propagation="false">{{info.money}}</view>
+    <view class="money" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type ==0}}">{{info.unitPrice}}/平</view>
+    <view class="money" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type ==1}}"> {{info.totalPrice}}/万元</view>
+    <view class="money" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type ==2}}">{{info.totalPrice}}元/月</view>
   </view>
   <view class="address" hover-class="none" hover-stop-propagation="false" bindtap='getAddress'>
     <image class="dw" src="../../images/dw02.png"></image>
-    <view class="" hover-class="none" hover-stop-propagation="false">广州市海珠区琶洲</view>
+    <view class="" hover-class="none" hover-stop-propagation="false">{{info.address}}</view>
     <image class="zy" src="../../images/zy03.png"></image>
   </view>
   <view class="detail" hover-class="none" hover-stop-propagation="false">
-    <view class="item" hover-class="none" hover-stop-propagation="false">面积：{{info.mianji}}</view>
-    <view class="item" hover-class="none" hover-stop-propagation="false">用途：{{info.yongtu}}</view>
-    <view class="item" hover-class="none" hover-stop-propagation="false">特色：{{info.tese}}</view>
+    <view class="item" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type == 0}}">面积：{{info.minArea}}-{{info.maxArea}}m²</view>
+     <view class="item" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type == 1}}">面积：{{info.area}}m²</view>
+      <view class="item" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type == 2}}">面积：{{info.area}}m²</view>
+    <view class="item" hover-class="none" hover-stop-propagation="false">用途：{{info.useName[0].name}}</view>
+    <view class="item" hover-class="none" hover-stop-propagation="false">特色：{{info.special[0].name}}</view>
     <view class="word" hover-class="none" hover-stop-propagation="false">富文本</view>
   </view>
   <view class="comment" hover-class="none" hover-stop-propagation="false">

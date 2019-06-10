@@ -1,5 +1,6 @@
 // pages/detail/detail.js
 const app = getApp()
+const util = require("../../utils/util.js");
 Page({
 
   /**
@@ -13,19 +14,19 @@ Page({
     ],
     isshoucang:false,
     info:{
-      name:'保利中心',
-      title:'房源副标题副标题副标题',
-      number:'80-100m²',
-      list:[
-        {name:'普通1',state:0},
-        {name:'普通2',state:1},
-        {name:'普通3',state:2}
-      ],
-      Commission:'总价*0.8%',
-      money:'21000/平',
-      mianji:'70-90m²',
-      yongtu:'普通',
-      tese:'教育'
+      // name:'保利中心',
+      // title:'房源副标题副标题副标题',
+      // number:'80-100m²',
+      // list:[
+      //   {name:'普通1',state:0},
+      //   {name:'普通2',state:1},
+      //   {name:'普通3',state:2}
+      // ],
+      // Commission:'总价*0.8%',
+      // money:'21000/平',
+      // mianji:'70-90m²',
+      // yongtu:'普通',
+      // tese:'教育'
     }
   },
   shoucang() {
@@ -121,7 +122,21 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
+    let params = {
+      type:options.type,
+      homeId:options.id
+    }
+    util._post('newhome/houseDetail',params).then(res=> {
+      if(res.code ==1) {
+        if(res.data.tagName!=null) {
+        res.data.tagArr = res.data.tagName.split(',')
 
+        }
+        this.setData({
+          info:res.data
+        })
+      }
+    })
   },
 
   /**

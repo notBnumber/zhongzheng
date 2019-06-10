@@ -9,14 +9,14 @@
     <view class="row">
       <image src="../../images/yzm01.png" class="code"></image>
       <input type="number" maxlength="6" placeholder="请输入验证码" bindinput='changeCode'/>
-      <button plain bindtap='getCode'>{{msg}}</button>
+      <button plain  bindtap='getCode'    >{{msg}}</button>
     </view>
     <view class="row">
       <image src="../../images/yqm01.png" style="width: 42rpx;height:42rpx;"></image>
-      <input type="number" placeholder="请输入邀请码（必填）" bindinput='changeInvitation'/>
+      <input type="number" placeholder="请输入邀请码（必填）"  bindinput='changeInvitation'/>
     </view>
 
-    <view class="btn" bindtap="pageToIndex" data-url="/pages/index/index" bindtap='toLogin'>登录</view>
+    <view class="btn" bindtap="pageToIndex"  data-url="/pages/index/index" bindtap='toLogin'>登录</view>
   </view>
   <view class="agreement" bindtap="isCheck">
     <image src="../../images/xy01.png" wx:if="{{isChoose}}" ></image>

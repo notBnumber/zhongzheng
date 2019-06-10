@@ -513,8 +513,36 @@ Page({
       Promise.all([
         util._get("secondhome/getSecondHomeImage"),
         util._get("secondhome/getSecondHome"),
-        util._get("configure/getbudget?type=0"),
-        util._get("configure/getArea?type=0"),
+        util._get("configure/getbudget?type=1"),
+        util._get("configure/getArea?type=1"),
+      ])
+        .then(result => {
+          console.log(result);
+          for (let item of result[1].data.list) {
+            if (item.tagName != null) {
+              item.tagArr = item.tagName.split(",");
+            }
+          }
+          this.setData({
+            imgUrl: app.globalData.imgUrl,
+            imgUrls: result[0].data,
+            hotList: result[1].data.list,
+            priceList: result[2].data,
+            mianjiList:result[3].data
+          });
+        })
+        .catch(e => {
+          console.log(e);
+          this.setData({
+            hotList: []
+          });
+        });
+    } else {
+      Promise.all([
+        util._get("rentinghome/getRentingHomeImage"),
+        util._get("rentinghome/getRentingHome"),
+        util._get("configure/getbudget?type=2"),
+        util._get("configure/getArea?type=2"),
       ])
         .then(result => {
           console.log(result);

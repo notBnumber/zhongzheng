@@ -2,18 +2,31 @@
   <view class="collected">
     <view class="section">
       <view class="container">
-        <view class="total" wx:for="{{sellList}}" wx:kex="index">
-          <image class="logo" src="{{item.img}}" mode="aspectFill"></image>
-          <view class="name">{{item.name}}</view>
-          <view class="area font-Medium">{{item.address}}</view>
+        <view class="total" wx:for="{{sellList}}" wx:kex="index" data-type="{{item.type}}" data-id="{{item.id}}" bindtap='toDetail'>
+          <image class="logo" src="{{imgUrl+item.image}}" mode="aspectFill"></image>
+          <view class="name">{{item.houseName}}</view>
+          <view class="area font-Medium" hover-class="none" hover-stop-propagation="false" wx:if="{{item.type == 0}}">
+            {{item.minArea}}-{{item.maxArea}}m² / {{item.address}}
+          </view>
+          <view class="area font-Medium" hover-class="none" hover-stop-propagation="false" wx:if="{{item.type == 1}}">
+            {{item.area}}m² / {{item.address}}
+          </view>
+          <view class="area font-Medium" hover-class="none" hover-stop-propagation="false" wx:if="{{item.type == 2}}">
+            {{item.area}}m² / {{item.address}}
+          </view>
+          <!-- <view class="area font-Medium">{{item.address}}</view> -->
           <view class="biaoqianList">
-            <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}"  wx:for="{{item.list}}" wx:for-item="items">{{items.name}}</view>
+            <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" wx:for="{{item.tagArr}}" wx:for-item="items" wx:if="{{index<3}}">
+              {{items}}
+            </view>
           </view>
-          <view class="sum font">
+          <view class="sum font" wx:if="{{item.type ==0}}">
             可获佣金：
-            <text>{{item.commisson}}</text>
+            <text>{{item.customerMoney}}%</text>
           </view>
-          <view class="price">{{item.price}}</view>
+          <view class="price" wx:if="{{item.type ==0}}">{{item.unitPrice}}/平</view>
+          <view class="price" wx:if="{{item.type ==1}}">{{item.totalPrice}}/万元</view>
+          <view class="price" wx:if="{{item.type ==2}}">{{item.totalPrice}}元/月</view>
         </view>
       </view>
       <!-- 没有 -->

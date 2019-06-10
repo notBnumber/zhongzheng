@@ -13,15 +13,16 @@
         <view class="time" hover-class="none" hover-stop-propagation="false">2018-12-17</view>
     </view>
       </button>
-    <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{list}}" data-state='{{item.state}}' bindtap='toDetail'>
-      <image class="" src="{{item.url}}"></image>
+    <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{list}}" data-type='{{item.type}}' bindtap='toDetail'>
+      <image wx:if="{{item.type == 0}}" class="" src="../../images/tz01.png"></image>
+      <image wx:if="{{item.type == 2}}" class="" src="../../images/qb01.png"></image>
       <view class="info" hover-class="none" hover-stop-propagation="false">
         <view class="top" hover-class="none" hover-stop-propagation="false">{{item.title}}</view>
         <view class="bottom" hover-class="none" hover-stop-propagation="false">
           {{item.content}}
         </view>
       </view>
-      <view class="time" hover-class="none" hover-stop-propagation="false">2018-12-17</view>
+      <view class="time" hover-class="none" hover-stop-propagation="false">{{item.createTime}}</view>
     </view>
   </view>
 </view>

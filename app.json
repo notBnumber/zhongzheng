@@ -15,7 +15,6 @@
     "pages/msg/msg",
     "pages/result/result",
     "pages/results/results",
-    "pages/register/register",
     "pages/registerText/registerText",
     "pages/login/login",
     "pages/chooseCity/chooseCity",

@@ -6,6 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    code:'',
+    codeId:'',
     ids:'',
     relation:'',
     title:'',
@@ -392,7 +394,20 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {},
+  onShow: function() {
+    let params   = { 
+      lat:wx.getStorageSync('latitude'),
+      log:wx.getStorageSync('longitude')
+    }
+    util._get('newhome/checkCity',params).then(res=> {
+      if(res.code == 1) {
+        this.setData({
+          city:res.data.regeocode.addressComponent.city,
+          cityId:res.data.regeocode.addressComponent.citycode
+        })
+      }
+    })
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

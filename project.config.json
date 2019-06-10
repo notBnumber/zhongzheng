@@ -39,7 +39,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 25,
+			"current": 26,
 			"list": [
 				{
 					"id": -1,
@@ -220,6 +220,13 @@
 					"id": -1,
 					"name": "组件",
 					"pathName": "pages/component/component",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "消息",
+					"pathName": "pages/ptInfo/ptInfo",
 					"query": "",
 					"scene": null
 				}
