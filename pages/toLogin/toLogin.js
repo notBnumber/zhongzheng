@@ -1,4 +1,6 @@
 const app = getApp();
+const util = require("../../utils/util.js");
+
 Page({
   data: {
     //判断小程序的API，回调，参数，组件等是否在当前版本可用。
@@ -64,6 +66,30 @@ Page({
           const accuracy = res.accuracy;
           wx.setStorageSync("latitude", latitude);
           wx.setStorageSync("longitude", longitude);
+
+          let params   = { 
+            lat:wx.getStorageSync('latitude'),
+            log:wx.getStorageSync('longitude')
+          }
+          util._get('newhome/checkCity',params).then(res=> {
+            if(res.code == 1) {
+              // this.setData({
+              //   city:res.data.regeocode.addressComponent.city,
+              //   cityId:res.data.regeocode.addressComponent.citycode
+              // })
+              wx.setStorageSync('city', res.data.regeocode.addressComponent.city)
+              util._get('configure/getCity?cityName=+'+res.data.regeocode.addressComponent.city).then(res=> {
+                if(res.code == 1) {
+                  // this.setData({
+                  //   city:res.data.regeocode.addressComponent.city,
+                  //   cityId:res.data.regeocode.addressComponent.citycode
+                  // })
+                  wx.setStorageSync('cityId', res.data.id)
+                  
+                }
+              })
+            }
+          })
           wx.switchTab({
             url: "/pages/index/index"
           });

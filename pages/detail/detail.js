@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    params:{},
     imgUrls: [
       "https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640",
       "https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640",
@@ -30,11 +31,40 @@ Page({
     }
   },
   shoucang() {
-    this.setData({
-      isshoucang:!this.data.isshoucang
-    })
-    console.log(this.data.isshoucang);
+    // this.setData({
+    //   isshoucang:!this.data.isshoucang
+    // })
+    let params  = {
+      sessionId:wx.getStorageSync('sessionId'),
+      type:this.data.params.type,
+      houseId:this.data.params.id
+    }
+    util._post('configure/collectionHome',params).then(res=>{
+      if(res.code ==1) {
+        // this.setData({
+        //   isshoucang:!this.data.isshoucang
+        // })
 
+        util._post("newhome/getIsCollection?type="+this.data.params.type+'&homeId='+this.data.params.id+'&sessionId='+wx.getStorageSync('sessionId')).then(res=>{
+          if(res.code ==1) {
+            this.setData({
+              isshoucang:res.data
+            })
+          }
+        })
+        if(this.data.isshoucang) {
+          wx.showToast({
+            title: '收藏成功',
+            icon: 'success'
+          })
+        } else {
+          wx.showToast({
+            title: '取消收藏成功',
+            icon: 'success'
+          })
+        }
+      }
+    })
   },
   getAddress() {
     let latitude  =    wx.getStorageSync('latitude')
@@ -122,21 +152,42 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
-    let params = {
-      type:options.type,
-      homeId:options.id
-    }
-    util._post('newhome/houseDetail',params).then(res=> {
-      if(res.code ==1) {
-        if(res.data.tagName!=null) {
-        res.data.tagArr = res.data.tagName.split(',')
+    // let params = {
+    //   type:options.type,
+    //   homeId:options.id
+    // }
+    // util._post('newhome/houseDetail',params).then(res=> {
+    //   if(res.code ==1) {
+    //     if(res.data.tagName!=null) {
+    //     res.data.tagArr = res.data.tagName.split(',')
 
-        }
-        this.setData({
-          info:res.data
-        })
-      }
+    //     }
+    //     this.setData({
+    //       info:res.data
+    //     })
+    //   }
+    // })
+    this.setData({
+      params:options
     })
+    Promise.all([
+      util._post("newhome/houseDetail?type="+options.type+'&homeId='+options.id),
+      util._post("newhome/getIsCollection?type="+options.type+'&homeId='+options.id+'&sessionId='+wx.getStorageSync('sessionId'))
+    ])
+      .then(result => {
+        console.log(result);
+        this.setData({
+          info:result[0].data,
+          isshoucang:result[1].data
+        });
+      })
+      .catch(e => {
+        console.log(e);
+        this.setData({
+          info:{},
+
+        })
+      });
   },
 
   /**

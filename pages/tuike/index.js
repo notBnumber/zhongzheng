@@ -1,5 +1,8 @@
 // pages/my/withdraw/index.js
 const app = getApp()
+const util = require("../../utils/util.js");
+const WxParse = require('../../wxParse/wxParse.js');
+
 Page({
 
   /**
@@ -7,7 +10,8 @@ Page({
    */
   data: {
     isProup: false,
-    height: app.globalData.height
+    height: app.globalData.height,
+    info:{}
   },
 
   pageTo({currentTarget: {dataset}}){
@@ -28,7 +32,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    util._get('pusher/set/page?sessionId='+wx.getStorageSync('sessionId')).then(res=>{
+      if(res.code ==1) {
+        article_content:WxParse.wxParse('article_content', 'html', res.data.rule, this, 5)
+        this.setData({
+          info:res.data
+        })
+        
+      }
+    })
   },
 
   /**

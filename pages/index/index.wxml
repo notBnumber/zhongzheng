@@ -79,7 +79,7 @@
       </view>
     </view>
     <view class="hotContent" hover-class="none" hover-stop-propagation="false">
-      <view class="hotContentItem" hover-class="none" hover-stop-propagation="false" wx:for="{{hotList}}" wx:key="{{index}}" bindtap='toDetail' data-id='{{item.name}}'>
+      <view class="hotContentItem" hover-class="none" hover-stop-propagation="false" wx:for="{{hotList}}" wx:key="{{index}}" bindtap='toDetail' data-type='{{item.type}}' data-id='{{item.id}}'>
         <image class="hotContentItemImg" src="{{imgUrl+item.image}}"></image>
         <view class="name" hover-class="none" hover-stop-propagation="false">
           {{item.houseName}}
@@ -94,7 +94,7 @@
           {{item.area}}m² / {{item.address}}
         </view>
         <view class="biaoqianList" hover-class="none" hover-stop-propagation="false">
-          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.tagArr}}" wx:for-item="items" wx:if="{{index<=2}}">
+          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.tagArr}}"  wx:key="key" wx:for-item="items" wx:if="{{index<=2}}">
             {{items}}
           </view>
         </view>

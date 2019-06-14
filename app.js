@@ -95,8 +95,8 @@ observe(obj, key, watchFun, deep, page) {
     userInfo: null,
     height: 0,
     info: "全局变量",
-    baseUrl: "http://10.0.0.158:8086/zhongda/api/",
-    imgUrl: "http://10.0.0.158:8086/zhongda/"
+    baseUrl: "http://10.0.0.158:8085/zhongda/api/",
+    imgUrl: "http://10.0.0.158:8085/zhongda/"
   },
   fun() {
     console.log('函数');

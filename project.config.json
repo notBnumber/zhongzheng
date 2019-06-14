@@ -224,9 +224,9 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 26,
 					"name": "消息",
-					"pathName": "pages/ptInfo/ptInfo",
+					"pathName": "pages/msg/msg",
 					"query": "",
 					"scene": null
 				}

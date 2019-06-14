@@ -30,7 +30,7 @@
             </view>
           </scroll-view>
           <view class="right specialRight" hover-class="none" hover-stop-propagation="false">
-            <view class="rightItem df {{item.state == true ?'active' :''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{specialRight}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkRight'>
+            <view class="rightItem df {{item.state == true ?'active' :''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{specialRight}}" wx:key="{{index}}"  data-id='{{item.id}}'  data-index='{{index}}' bindtap='checkRight'>
               {{item.name}}
               <view class="{{item.state == true ?'yes' :''}} df" hover-class="none" hover-stop-propagation="false" wx:if="{{item.state == true}}">
                 √
@@ -52,7 +52,7 @@
         <view class="contentTop" hover-class="none" hover-stop-propagation="false">
           <scroll-view class="" scroll-y style="height: 803rpx;width:200rpx">
             <view class="left" hover-class="none" hover-stop-propagation="false">
-              <view class="leftItem" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkQuyu'>
+              <view class="leftItem" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuList}}" wx:key="{{index}}" data-index='{{index}}'  data-id='{{item.id}}' bindtap='checkQuyu'>
                 <view class="{{quyuIndex == index ?'active' :''}} items" hover-class="none" hover-stop-propagation="false">
                   {{item.name}}
                 </view>
@@ -64,7 +64,7 @@
               <view class="right" hover-class="none" hover-stop-propagation="false">
                 <scroll-view class="" scroll-y style="height: 550rpx;">
                   <view style='display: flex;justify-content: space-between;flex-wrap: wrap;' hover-class="none" hover-stop-propagation="false">
-                    <view class="rightItem df {{item.state == true ?'active' :''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuList[quyuIndex].list}}" wx:key="{{index}}" data-id='{{item.id}}' data-index='{{index}}' bindtap='checkQuyuRight'>
+                    <view class="rightItem df {{item.state == true ?'active' :''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuRight}}" wx:key="{{index}}" data-id='{{item.id}}' data-index='{{index}}' bindtap='checkQuyuRight'>
                       {{item.name}}
                       <view class="{{item.state == true ?'yes' :''}} df" hover-class="none" hover-stop-propagation="false" wx:if="{{item.state == true}}">
                         √
@@ -78,7 +78,7 @@
               <view class="titles" hover-class="none" hover-stop-propagation="false">已选：</view>
               <view class="contents" hover-class="none" hover-stop-propagation="false">
                 <scroll-view class="" scroll-y style="height: 150rpx;">
-                  <view style='display: flex;justify-content: space-between;flex-wrap: wrap;' hover-class="none" hover-stop-propagation="false">
+                  <view style='display: flex;justify-content: space-between;flex-wrap: wrap;align-content:flex-start;' hover-class="none" hover-stop-propagation="false">
                     <!-- <view class=" df " hover-class="none" hover-stop-propagation="false" wx:for="{{quyuList}}"> -->
                     <view class="rightItem df" wx:for="{{quyuCheck}}" wx:for-item="items" wx:key="{{index}}" data-index='{{index}}' data-id='{{items.id}}' bindtap='del' wx:if="{{items.state}}">
                       {{items.name}}
@@ -117,7 +117,7 @@
     </view>
   </view>
   <view class="tab" hover-class="none" hover-stop-propagation="false">
-    <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{tabList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='filter'>
+    <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{tabList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='filter' wx:if="{{optionState != 0  || index !=2}}">
       <view class="itemP" hover-class="none" hover-stop-propagation="false">
         <view class="itemName" hover-class="none" hover-stop-propagation="false">
           {{item.name}}
@@ -128,7 +128,7 @@
   </view>
   <view class="" hover-class="none" hover-stop-propagation="false">
     <view class="hotContent" hover-class="none" hover-stop-propagation="false">
-      <view class="hotContentItem" hover-class="none" hover-stop-propagation="false" wx:for="{{hotList}}" wx:key="{{index}}" bindtap='toDetail' data-id='{{item.name}}'>
+      <view class="hotContentItem" hover-class="none" hover-stop-propagation="false" wx:for="{{hotList}}" wx:key="{{index}}" bindtap='toDetail' data-id='{{item.id}}' data-type='{{optionState}}'>
         <image class="hotContentItemImg" src="{{imgUrl+item.image}}"></image>
         <view class="name" hover-class="none" hover-stop-propagation="false">
           {{item.houseName}}
@@ -143,7 +143,7 @@
           {{item.area}}m² / {{item.address}}
         </view>
         <view class="biaoqianList" hover-class="none" hover-stop-propagation="false">
-          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.tagArr}}" wx:for-item="items" wx:if="{{index<3}}">
+          <view class="biaoqian df {{items.state==1?'state1':''}} {{items.state==2?'state2':''}}" hover-class="none" hover-stop-propagation="false" wx:for="{{item.tagArr}}"  wx:key="key" wx:for-item="items" wx:if="{{index<3}}">
             {{items}}
           </view>
         </view>

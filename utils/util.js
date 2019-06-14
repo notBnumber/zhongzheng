@@ -17,7 +17,7 @@ const app = getApp();
 
 const baseUrl = app.globalData.baseUrl;
  
-const http = ({ url = '', param = {}, ...other } = {}) => {
+const http = ({ url = '', param = {}, ...other ,state} = {}) => {
   wx.showLoading({
     title: '请求中，请耐心等待..'
   });
@@ -27,36 +27,7 @@ const http = ({ url = '', param = {}, ...other } = {}) => {
       url: getUrl(url),
       data: param,
       header: {
-        'content-type': 'application/json' // 默认值 ,另一种是 "content-type": "application/x-www-form-urlencoded"
-      },
-      ...other,
-      complete: (res) => {
-        wx.hideLoading();
-        console.log(`耗时${Date.now() - timeStart}`);
-        if (res.data.code == 1) {
-          resolve(res.data)          
-        } else {
-          reject(res)
-          wx.showToast({
-            title: res.data.desc,
-            icon: 'loading'
-          })
-        }
-      }
-    })
-  })
-}
-const https = ({ url = '', param = {}, ...other } = {}) => {
-  wx.showLoading({
-    title: '请求中，请耐心等待..'
-  });
-  let timeStart = Date.now();
-  return new Promise((resolve, reject) => {
-    wx.request({
-      url: getUrl(url),
-      data: param,
-      header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值 ,另一种是 "content-type": "application/x-www-form-urlencoded"
+        'content-type': state // 默认值 ,另一种是 "content-type": "application/x-www-form-urlencoded"
       },
       ...other,
       complete: (res) => {
@@ -86,15 +57,18 @@ const getUrl = (url) => {
 const _get = (url, param = {}) => {
   return http({
     url,
-    param
+    param,
+    method: 'get',
+    state:'application/json'
   })
 }
  
 const _post = (url, param = {}) => {
-  return https({
+  return http({
     url,
     param,
-    method: 'post'
+    method: 'post',
+    state:'application/x-www-form-urlencoded'
   })
 }
  

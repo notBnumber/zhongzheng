@@ -28,6 +28,11 @@ Page({
   },
   upImg(path, name, state) {
     let that = this;
+    wx.showLoading({
+      title: '上传图片中',
+      mask: true,
+
+    });
     wx.uploadFile({
       url: app.globalData.baseUrl + "configure/saveImg", //仅为示例，非真实的接口地址
       filePath: path,
@@ -40,6 +45,7 @@ Page({
         //do something
         console.log(JSON.parse(data));
         
+        wx.hideLoading();
         if (state == 1) {
           that.setData({
             oneImg: JSON.parse(data).data.fileName

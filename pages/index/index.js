@@ -310,10 +310,10 @@ Page({
   },
   // 房屋详情
   toDetail(e) {
-    console.log(e.currentTarget.dataset);
-
+    console.log(e.currentTarget.dataset.id,this.data.type);
+    // return
     wx.navigateTo({
-      url: "../detail/detail?id=" + e.currentTarget.dataset.id
+      url: "../detail/detail?id=" + e.currentTarget.dataset.id+'&type='+this.data.tabIndex
     });
   },
   // 房屋列表

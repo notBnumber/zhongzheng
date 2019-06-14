@@ -9,11 +9,13 @@ Page({
   },
   toDetail(e) {
     let state = e.currentTarget.dataset.type
+    let id = e.currentTarget.dataset.id
     console.log(state);
     
     if (state == 0 ) {
+      // 平台
       wx.navigateTo({
-        url: '../../pages/ptInfo/ptInfo',
+        url: '../../pages/ptInfo/ptInfo?id='+id,
         success: (result)=>{
           
         },
@@ -21,8 +23,10 @@ Page({
         complete: ()=>{}
       });
     } else if(state == 2){
+      // 钱包
+      // notice/noticeDetail
       wx.navigateTo({
-        url: '../msg/msg',
+        url: '../msg/msg?id='+id,
         success: (result)=>{
           
         },

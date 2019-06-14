@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    checkNum:null,
-    checkPrice:0,
-    checkMianji:0,
-    checkFangxing:0,
+    checkNum: null,
+    checkPrice: 0,
+    checkMianji: 0,
+    checkFangxing: 0,
     selectName: null,
     num: 1,
     optionState: null,
@@ -90,32 +90,32 @@ Page({
     HouseList: [
       {
         id: 0,
-        value:'不限'
+        value: "不限"
       },
       {
         id: 1,
-        value:'一室'
+        value: "一室"
       },
       {
         id: 2,
-        value:'一室'
+        value: "一室"
       },
       {
         id: 3,
-        value:'一室'
+        value: "一室"
       },
       {
         id: 4,
-        value:'四室'
+        value: "四室"
       },
       {
         id: 5,
-        value:'五室'
+        value: "五室"
       },
       {
         id: 6,
-        value:'六室'
-      },
+        value: "六室"
+      }
     ],
     mianjiList: [
       {
@@ -161,6 +161,12 @@ Page({
     // 其他右边
     specialIndexs: 0,
     specialRight: [],
+    // 区Id
+    quId:'',
+    // 区域id字符串
+    quyuIds:[],
+    // 其他项目id字符串
+    specialIds: "",
     specialName: null,
     quyuIndex: 0,
     quyuIndexs: 0,
@@ -220,7 +226,11 @@ Page({
     console.log(e.currentTarget.dataset);
 
     wx.navigateTo({
-      url: "../detail/detail?id=" + e.currentTarget.dataset.id
+      url:
+        "../detail/detail?id=" +
+        e.currentTarget.dataset.id +
+        "&type=" +
+        e.currentTarget.dataset.type
     });
   },
   //预览轮播图
@@ -230,66 +240,107 @@ Page({
   // 区域左边
   checkQuyu(e, state) {
     console.log(e, state);
+
+    // index = e.currentTarget.dataset.index
+
     let index = "";
     if (state != null) {
       console.log("初始化");
+      util
+        ._get("configure/getAllArea?areaId=" + wx.getStorageSync("cityId"))
+        .then(res => {
+          if (res.code == 1) {
+            this.setData({
+              quyuIndex: 0,
+              quyuList: res.data
+            });
+            util
+              ._get("configure/getAllArea?areaId=" + this.data.quyuList[0].id)
+              .then(res => {
+                if (res.code == 1) {
+                  for(let item of this.data.quyuRight) {
+                    item.state = false
+                  }
+                  this.setData({
+                    quyuIndex: 0,
+                    quyuRight: res.data,
+                    quId:this.data.quyuList[0].id
+                  });
+                }
+              });
+          }
+        });
 
       // index = e.currentTarget.dataset.index
-      this.setData({
-        quyuIndex: 0,
-        quyuRight: this.data.quyuList[0].list
-      });
     } else {
       console.log("左边");
 
-      index = e.currentTarget.dataset.index;
-      this.setData({
-        quyuIndex: index
-        // quyuRight:this.data.quyuList[index].list
+      let id = e.currentTarget.dataset.id;
+      let index = e.currentTarget.dataset.index;
+
+      util._get("configure/getAllArea?areaId=" + id).then(res => {
+        if (res.code == 1) {
+          for(let item of this.data.quyuRight) {
+            item.state = false
+          }
+          this.setData({
+            quyuIndex: index,
+            quyuRight: res.data
+          });
+        }
       });
       console.log(this.data.quyuList[this.data.quyuIndex]);
     }
   },
   // 区域右边
   checkQuyuRight(e) {
-    let state = e.currentTarget.dataset.index;
-
-    let arr = [];
-    this.data.quyuList[this.data.quyuIndex].list[state].state = !this.data
-      .quyuList[this.data.quyuIndex].list[state].state;
-    for (let item of this.data.quyuList) {
-      for (let items of item.list) {
-        arr.push(items);
-      }
-    }
+    let index = e.currentTarget.dataset.index;
+    
+    // let arr = [];
+    // this.data.quyuList[this.data.quyuIndex].list[state].state = !this.data
+    //   .quyuList[this.data.quyuIndex].list[state].state;
+    // for (let item of this.data.quyuList) {
+    //   for (let items of item.list) {
+    //     arr.push(items);
+    //   }
+    // }
+    // this.setData({
+    //   quyuList: this.data.quyuList,
+    //   quyuCheck: arr
+    // });
+    console.log(this.data.quyuRight[index]);
+    // this.data.quyuCheck.push(this.data.quyuRight[index])
+    this.data.quyuRight[index].state = !this.data.quyuRight[index].state
+    this.data.quyuCheck = this.data.quyuRight.filter(
+      (item, index, arr) => item.state
+    );
     this.setData({
-      quyuList: this.data.quyuList,
-      quyuCheck: arr
-    });
+      quyuCheck:this.data.quyuCheck
+    })
   },
   // 区域删除
   del(e) {
-    let state = e.currentTarget.dataset.index;
+    let index = e.currentTarget.dataset.index;
     let id = e.currentTarget.dataset.id;
     console.log(id);
-
+    this.data.quyuCheck[index].state = false
     this.data.quyuCheck = this.data.quyuCheck.filter(
-      (item, index, arr) => index != state
+      (item, index, arr) => item.state
     );
-    for (let item of this.data.quyuList) {
-      for (let y in item.list) {
-        console.log(item.list[y].id, "?????");
+    // for (let item of this.data.quyuList) {
+    //   for (let y in item.list) {
+    //     console.log(item.list[y].id, "?????");
 
-        if (id == item.list[y].id) {
-          console.log(item.list[y]);
+    //     if (id == item.list[y].id) {
+    //       console.log(item.list[y]);
 
-          item.list[y].state = false;
-          // item.list[y].splice(y,1)
-        }
-      }
-    }
+    //       item.list[y].state = false;
+    //       // item.list[y].splice(y,1)
+    //     }
+    //   }
+    // }
     console.log(this.data.quyuList);
-
+      
     this.setData({
       quyuCheck: this.data.quyuCheck,
       quyuList: this.data.quyuList
@@ -311,9 +362,31 @@ Page({
     this.checkQuyu(e, 2);
   },
   btnQuyu() {
+    let arrs=[]
+    this.data.quyuCheck.filter(
+      (item, index, arr) => {
+        if(item.state) {
+          arrs.push(item.id)
+        }
+      }
+    );
+
     this.setData({
-      show: !this.data.show
+      quyuIds:arrs,
+      show: !this.data.show,
+
     });
+    let params = {
+      pageNumber:1,
+      pageSize:20,
+      cityId:wx.getStorageSync('cityId'),
+      stateId:this.data.quId,
+      countyId:this.quyuIds.toString(),
+      budgetId:this.data.checkPrice,
+      areaId:this.data.checkMianji,
+      useId:
+    }
+    util._post('newhome/getNewHomePage')
   },
   // 其他左边选项
   checkSpecial(e) {
@@ -324,23 +397,35 @@ Page({
         ? 0
         : e.currentTarget.dataset.index;
     console.log(this.data.specialList[state]);
-
-    this.setData({
-      specialIndex: state,
-      specialRight: this.data.specialList[state].list
+    util._get("configure/getType?type=" + state).then(res => {
+      this.setData({
+        specialIndex: state,
+        specialRight: res.data
+      });
     });
     console.log(this.data.specialRight);
   },
   // 其他右边选项
   checkRight(e) {
     let state = e.currentTarget.dataset.index;
-    console.log(this.data.specialRight[state].state);
+    let id = e.currentTarget.dataset.id;
+
+    console.log(id);
     // this.setData({
     //   specialIndexs:state
     // })
     this.data.specialRight[state].state = !this.data.specialRight[state].state;
+    let arr = [];
+    this.data.specialRight.filter(item => {
+      if (item.state) {
+        arr.push(item.id);
+      }
+    });
+    console.log(arr);
+
     this.setData({
-      specialRight: this.data.specialRight
+      specialRight: this.data.specialRight,
+      specialIds: arr.toString()
     });
   },
   swiperChange(e) {
@@ -367,12 +452,15 @@ Page({
     this.setData({
       show: !this.data.show
     });
+    
   },
   filter(e) {
     let state = e.currentTarget.dataset.index;
+    console.log(state, "下标");
+
     this.setData({
-      checkNum:state
-    })
+      checkNum: state
+    });
     this.setData({
       currentState: state
     });
@@ -409,12 +497,16 @@ Page({
         specialName: "其他"
       });
       // this.checkSpecial(e)
-      this.setData({
-        specialRight: this.data.specialList[0].list
+      util._get("configure/getType?type=0").then(res => {
+        this.setData({
+          specialRight: res.data
+        });
       });
     } else if (state == 0) {
       // 区域
+
       this.setData({
+        quyuCheck:[],
         show: !this.data.show,
         specialName: "意向区域"
       });
@@ -423,21 +515,21 @@ Page({
   },
   check(e) {
     console.log(e.currentTarget.dataset.id);
-    if(this.data.checkNum == 1) {
+    if (this.data.checkNum == 1) {
       this.setData({
-        show:!this.data.show,
-        checkPrice:e.currentTarget.dataset.id
-      })
-    } else if(this.data.checkNum == 2) {
+        show: !this.data.show,
+        checkPrice: e.currentTarget.dataset.id
+      });
+    } else if (this.data.checkNum == 2) {
       this.setData({
-        show:!this.data.show,
-        checkFangxing:e.currentTarget.dataset.id
-      })
+        show: !this.data.show,
+        checkFangxing: e.currentTarget.dataset.id
+      });
     } else {
       this.setData({
-        show:!this.data.show,
-        checkMianji:e.currentTarget.dataset.id
-      })
+        show: !this.data.show,
+        checkMianji: e.currentTarget.dataset.id
+      });
     }
   },
   onClose() {
@@ -454,8 +546,7 @@ Page({
     this.setData({
       optionState: options.index
     });
-    console.log(this.data.optionState,'斤斤计较军军军军军军军军军军军军军军军军');
-    
+
     if (options.index == 0) {
       wx.setNavigationBarTitle({
         title: "新房"
@@ -485,8 +576,7 @@ Page({
         util._get("newhome/getNewHomeImage"),
         util._get("newhome/getNewHomePage"),
         util._get("configure/getbudget?type=0"),
-        util._get("configure/getArea?type=0"),
-        
+        util._get("configure/getArea?type=0")
       ])
         .then(result => {
           console.log(result);
@@ -500,7 +590,7 @@ Page({
             imgUrls: result[0].data,
             hotList: result[1].data.list,
             priceList: result[2].data,
-            mianjiList:result[3].data
+            mianjiList: result[3].data
           });
         })
         .catch(e => {
@@ -515,6 +605,7 @@ Page({
         util._get("secondhome/getSecondHome"),
         util._get("configure/getbudget?type=1"),
         util._get("configure/getArea?type=1"),
+        util._get("configure/getRoomType")
       ])
         .then(result => {
           console.log(result);
@@ -528,7 +619,8 @@ Page({
             imgUrls: result[0].data,
             hotList: result[1].data.list,
             priceList: result[2].data,
-            mianjiList:result[3].data
+            mianjiList: result[3].data,
+            HouseList: result[4].data
           });
         })
         .catch(e => {
@@ -543,6 +635,7 @@ Page({
         util._get("rentinghome/getRentingHome"),
         util._get("configure/getbudget?type=2"),
         util._get("configure/getArea?type=2"),
+        util._get("configure/getRoomType")
       ])
         .then(result => {
           console.log(result);
@@ -556,7 +649,8 @@ Page({
             imgUrls: result[0].data,
             hotList: result[1].data.list,
             priceList: result[2].data,
-            mianjiList:result[3].data
+            mianjiList: result[3].data,
+            HouseList: result[4].data
           });
         })
         .catch(e => {

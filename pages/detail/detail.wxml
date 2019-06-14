@@ -47,8 +47,8 @@
     <view class="item" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type == 0}}">面积：{{info.minArea}}-{{info.maxArea}}m²</view>
      <view class="item" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type == 1}}">面积：{{info.area}}m²</view>
       <view class="item" hover-class="none" hover-stop-propagation="false" wx:if="{{info.type == 2}}">面积：{{info.area}}m²</view>
-    <view class="item" hover-class="none" hover-stop-propagation="false">用途：{{info.useName[0].name}}</view>
-    <view class="item" hover-class="none" hover-stop-propagation="false">特色：{{info.special[0].name}}</view>
+    <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{info.useName}}" wx:for-item="items">用途：{{items.name}}</view>
+    <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{info.special}}" wx:for-item="items">特色：{{items.name}}</view>
     <view class="word" hover-class="none" hover-stop-propagation="false">富文本</view>
   </view>
   <view class="comment" hover-class="none" hover-stop-propagation="false">

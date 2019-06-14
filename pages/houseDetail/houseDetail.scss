@@ -283,6 +283,8 @@ van-popup {
         padding:15rpx 30rpx;
         display: flex;
         justify-content: space-between;
+        align-content: flex-start;
+        flex-wrap: wrap;
         border-left: 1rpx solid #E4E4E4;
         .rightItem {
           width: 200rpx;

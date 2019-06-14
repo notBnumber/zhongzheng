@@ -1,3 +1,5 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+
 <view class="container">
   <view class="tabs" style="top: {{height}}px">
     <image src="../../images/arrIcon.png" bindtap="goback"></image>
@@ -14,7 +16,7 @@
             推荐好友买房
           </text>
           <view class="" hover-class="none" hover-stop-propagation="false">
-            10000 人
+            {{info.friendNumber}} 人
           </view>
         </view>
         <view class="right" hover-class="none" hover-stop-propagation="false">
@@ -22,14 +24,14 @@
             平台已发放奖励
           </text>
           <view class="" hover-class="none" hover-stop-propagation="false">
-            10000 元
+            {{info.reward}} 元
           </view>
         </view>
       </view>
     </view>
   </view>
   <view class="ul" style="height: calc(100vh-400rpx);">
-    <view class="view" hover-class="none" hover-stop-propagation="false">
+    <!-- <view class="view" hover-class="none" hover-stop-propagation="false">
       推荐买房规则：
     </view>
     <view class="text">
@@ -40,7 +42,8 @@
     </view>
         <view  class="text">
       3.成功购房后，即可获得佣金；
-    </view>
+    </view> -->
+    <template is="wxParse" data="{{wxParseData:article_content.nodes}}" />
   </view>
   <view class="btn df" hover-class="" hover-stop-propagation="false" bindtap='pageTo' data-url='../../pages/panInfo/panInfo'>
   推荐盘源
