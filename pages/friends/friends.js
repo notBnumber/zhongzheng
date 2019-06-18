@@ -6,20 +6,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    code:'',
-    codeId:'',
-    ids:'',
-    relation:'',
-    title:'',
-    name:'',
-    phone:'',
+    code: "",
+    codeId: "",
+    ids: "",
+    relation: "",
+    title: "",
+    name: "",
+    phone: "",
     yusuan: "请选择设置预算",
     mianjiplace: "请选择意向面积",
-    yusuanId:null,
-    mainjiId:null,
-    numberIndexId:null,
+    yusuanId: null,
+    mainjiId: null,
+    numberIndexId: null,
     currentState: null,
-    stateId:null,
+    stateId: null,
     show: false,
     typesList: [
       {
@@ -43,32 +43,32 @@ Page({
     numberList: [
       {
         id: 0,
-        value:'不限'
+        value: "不限"
       },
       {
         id: 1,
-        value:'一室'
+        value: "一室"
       },
       {
         id: 2,
-        value:'一室'
+        value: "一室"
       },
       {
         id: 3,
-        value:'一室'
+        value: "一室"
       },
       {
         id: 4,
-        value:'四室'
+        value: "四室"
       },
       {
         id: 5,
-        value:'五室'
+        value: "五室"
       },
       {
         id: 6,
-        value:'六室'
-      },
+        value: "六室"
+      }
     ],
     typesIndex: 0,
     numberIndex: 0,
@@ -101,6 +101,10 @@ Page({
     quyuIndex: 0,
     quyuIndexs: 0,
     quyuRight: [],
+    quId: "",
+    quyuIds: [],
+    quyuIndex: 0,
+
     // 选中的
     quyuCheck: [],
     quyuList: [
@@ -148,13 +152,13 @@ Page({
   },
   chooseName(e) {
     this.setData({
-      name:e.detail.value
-    })
+      name: e.detail.value
+    });
   },
   choosePhone(e) {
     this.setData({
-      phone:e.detail.value
-    })
+      phone: e.detail.value
+    });
   },
   //关闭弹框
   onClose() {
@@ -170,9 +174,15 @@ Page({
     if (this.data.currentState == 1) {
       this.setData({
         yusuan: this.data.openList[index].value,
-        yusuanId:this.data.openList[index].id
+        yusuanId: this.data.openList[index].id
       });
     } else if (this.data.currentState == 2) {
+      console.log(this.data.openList);
+      
+      console.log(this.data.openList[index].value);
+      console.log(this.data.openList[index].id);
+      
+      
       this.setData({
         mianjiplace: this.data.openList[index].value,
         mainjiId: this.data.openList[index].id
@@ -190,11 +200,11 @@ Page({
     });
   },
   checkNumber(e) {
-    console.log(e);
+    console.log(e.currentTarget.dataset.id);
 
     this.setData({
       numberIndex: e.currentTarget.dataset.index,
-      numberIndexId:e.currentTarget.dataset.id
+      numberIndexId: e.currentTarget.dataset.id
     });
   },
   checkState(e) {
@@ -225,18 +235,16 @@ Page({
   money(e) {
     // 新 二 租
     console.log(e.currentTarget.dataset.id);
-      util._get('configure/getbudget?type='+this.data.typesIndex).then(res=>{
-        if(res.code==1) {
-          this.setData({
-            show: !this.data.show,
-            openList: res.data,
-            currentState: e.currentTarget.dataset.id,
-            title:'设置预算'
-          });
-        }
-      })
-
-    
+    util._get("configure/getbudget?type=" + this.data.typesIndex).then(res => {
+      if (res.code == 1) {
+        this.setData({
+          show: !this.data.show,
+          openList: res.data,
+          currentState: e.currentTarget.dataset.id,
+          title: "设置预算"
+        });
+      }
+    });
   },
   // 面积
   mianji(e) {
@@ -247,17 +255,16 @@ Page({
     //   currentState: e.currentTarget.dataset.id
     // });
 
-
-    util._get('configure/getArea?type='+this.data.typesIndex).then(res=>{
-      if(res.code==1) {
+    util._get("configure/getArea?type=" + this.data.typesIndex).then(res => {
+      if (res.code == 1) {
         this.setData({
           show: !this.data.show,
           openList: res.data,
           currentState: e.currentTarget.dataset.id,
-          title:'面积'
+          title: "面积"
         });
       }
-    })
+    });
   },
   // 区域
   quyu(e) {
@@ -271,52 +278,116 @@ Page({
   // 区域左边
   checkQuyu(e, state) {
     console.log(e, state);
+
+    // index = e.currentTarget.dataset.index
+
     let index = "";
     if (state != null) {
       console.log("初始化");
+      util
+        ._get("configure/getAllArea?areaId=" + wx.getStorageSync("cityId"))
+        .then(res => {
+          if (res.code == 1) {
+            this.setData({
+              quyuIndex: 0,
+              quyuList: res.data
+            });
+            util
+              ._get("configure/getAllArea?areaId=" + res.data[0].id)
+              .then(res => {
+                if (res.code == 1) {
+                  // for (let item of this.data.quyuRight) {
+                  //   item.state = false;
+                  // }
+                  this.data.quyuList[0].list = res.data;
+                  this.setData({
+                    quyuIndex: 0,
+                    quyuList: this.data.quyuList,
+                    quId: this.data.quyuList[0].id
+                  });
+                }
+              });
+          }
+        });
 
       // index = e.currentTarget.dataset.index
-      this.setData({
-        quyuIndex: 0,
-        quyuRight: this.data.quyuList[0].list
-      });
     } else {
       console.log("左边");
 
-      index = e.currentTarget.dataset.index;
-      this.setData({
-        quyuIndex: index
-        // quyuRight:this.data.quyuList[index].list
+      let id = e.currentTarget.dataset.id;
+      let index = e.currentTarget.dataset.index;
+
+      util._get("configure/getAllArea?areaId=" + id).then(res => {
+        if (res.code == 1) {
+          // for (let item of this.data.quyuRight) {
+          //   item.state = false;
+          // }
+          this.data.quyuList[index].list = res.data;
+          this.setData({
+            quyuIndex: index,
+            quyuList: this.data.quyuList
+          });
+        }
       });
       console.log(this.data.quyuList[this.data.quyuIndex]);
     }
   },
   // 区域右边
   checkQuyuRight(e) {
-    let state = e.currentTarget.dataset.index;
-
+    let index = e.currentTarget.dataset.index;
+    let quyuIndex = this.data.quyuIndex;
+    // let arr = [];
+    // this.data.quyuList[this.data.quyuIndex].list[state].state = !this.data
+    //   .quyuList[this.data.quyuIndex].list[state].state;
+    // for (let item of this.data.quyuList) {
+    //   for (let items of item.list) {
+    //     arr.push(items);
+    //   }
+    // }
+    // this.setData({
+    //   quyuList: this.data.quyuList,
+    //   quyuCheck: arr
+    // });
+    // console.log(this.data.quyuRight[index]);
+    // this.data.quyuCheck.push(this.data.quyuRight[index])
+    this.data.quyuList[quyuIndex].list[index].state = !this.data.quyuList[
+      quyuIndex
+    ].list[index].state;
+    // let arr = this.data.quyuList[quyuIndex].list.filter(
+    //   (item, index, arr) => {
+    //     if(item.state ) {
+    //       arr.push(item)
+    //     }
+    //   }
+    // );
+    let arrays = this.data.quyuList;
     let arr = [];
-    this.data.quyuList[this.data.quyuIndex].list[state].state = !this.data
-      .quyuList[this.data.quyuIndex].list[state].state;
-    for (let item of this.data.quyuList) {
-      for (let items of item.list) {
-        arr.push(items);
+    for (let item of arrays) {
+      if (item.list) {
+        for (let items of item.list) {
+          if (items.state) {
+            arr.push(items);
+          }
+        }
       }
     }
+    console.log(arr, "888888");
+
+    // this.data.quyuCheck = this.data.quyuCheck.concat(arr)
+
     this.setData({
-      quyuList: this.data.quyuList,
       quyuCheck: arr
     });
   },
   // 区域删除
   del(e) {
-    let state = e.currentTarget.dataset.index;
+    let index = e.currentTarget.dataset.index;
     let id = e.currentTarget.dataset.id;
-    console.log(id);
-
-    this.data.quyuCheck = this.data.quyuCheck.filter(
-      (item, index, arr) => index != state
-    );
+    // console.log(id);
+    // this.data.quyuCheck[index].state = false;
+    // this.data.quyuCheck = this.data.quyuCheck.filter(
+    //   (item, index, arr) => item.state
+    // );
     for (let item of this.data.quyuList) {
       for (let y in item.list) {
         console.log(item.list[y].id, "?????");
@@ -339,47 +410,70 @@ Page({
   // 重置
   resetQuyu(e) {
     for (let item of this.data.quyuList) {
-      for (let items of item.list) {
-        console.log(items);
-        items.state = false;
+      if(item.list) {
+        console.log(99909090);
+        
+        // for (let items of item.list) {
+        //   console.log(items);
+        //   items.state = false;
+        // }
       }
     }
     console.log(this.data.quyuList);
 
     this.setData({
       quyuList: this.data.quyuList,
-      quyuCheck: []
+      quyuCheck: [],
+      quyuIds: ""
     });
     this.checkQuyu(e, 2);
   },
   btnQuyu() {
+    let arrs = [];
+    this.data.quyuCheck.filter((item, index, arr) => {
+      if (item.state) {
+        arrs.push(item.id);
+      }
+    });
+
     this.setData({
+      quyuIds: arrs.toString(),
       show: !this.data.show
     });
+    // this.screen()
   },
   chooseRelation(e) {
     this.setData({
-      relation:e.detail.value
-    })
+      relation: e.detail.value
+    });
   },
   // 提交
   submit() {
-    wx.navigateTo({
-      url: '../friendsResult/friendsResult'
-    })
+
     let params = {
-      sessionId:wx.getStorageSync('sessionId'),
-      recommendedPerson:this.data.name,
-      recommendedTele:this.data.phone,
-      intentionType:this.data.typesIndex,
-      budget:this.data.yusuanId,
-      area:this.data.mainjiId,
-      intentionUnit:this.data.numberIndexId,
-      State:this.data.state,
-      relation:this.data.relation,
-      intentionalRegionIds:this.data.ids
-    }
-    util._get('pusher/submitSource')
+      sessionId: wx.getStorageSync("sessionId"),
+      recommendedPerson: this.data.name,
+      recommendedTele: this.data.phone,
+      intentionType: this.data.typesIndex,
+      budget: this.data.yusuanId,
+      area: this.data.mainjiId,
+      intentionUnit: this.data.numberIndexId,
+      State: this.data.state,
+      relation: this.data.relation,
+      intentionalRegionIds: this.data.quyuIds
+    };
+    util._get("pusher/submitSource", params).then(res => {
+      if(res.code == 1) {
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success'
+        })
+        wx.redirectTo({
+          url: "../friendsResult/friendsResult"
+        });
+        
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面加载
@@ -395,18 +489,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let params   = { 
-      lat:wx.getStorageSync('latitude'),
-      log:wx.getStorageSync('longitude')
-    }
-    util._get('newhome/checkCity',params).then(res=> {
-      if(res.code == 1) {
+    let params = {
+      lat: wx.getStorageSync("latitude"),
+      log: wx.getStorageSync("longitude")
+    };
+    util._get("newhome/checkCity", params).then(res => {
+      if (res.code == 1) {
         this.setData({
-          city:res.data.regeocode.addressComponent.city,
-          cityId:res.data.regeocode.addressComponent.citycode
-        })
+          city: res.data.regeocode.addressComponent.city,
+          cityId: res.data.regeocode.addressComponent.citycode
+        });
       }
-    })
+    });
+
+    util._get("configure/getRoomType").then(res => {
+      if (res.code == 1) {
+        this.setData({
+          numberList: res.data
+        });
+      }
+    });
   },
 
   /**

@@ -57,24 +57,24 @@
       <view class="" hover-class="none" hover-stop-propagation="false">房源点评</view>
     </view>
     <view class="content" hover-class="none" hover-stop-propagation="false">
-      <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{5}}">
+      <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{list}}" wx:key="index">
         <view class="itemTop" hover-class="none" hover-stop-propagation="false">
           <view class="itemTopLeft" hover-class="none" hover-stop-propagation="false">
-            <image class="avatar" src="https://images.unsplash.com/photo-1551446591-142875a901a1?w=640"></image>
+            <image class="avatar" src="{{imgUrl+item.account[0].avatar}}"></image>
           </view>
           <view class="itemTopRight" hover-class="none" hover-stop-propagation="false">
-            <view class="tt" hover-class="none" hover-stop-propagation="false">188****1564</view>
-            <view class="tb" hover-class="none" hover-stop-propagation="false">12-17</view>
+            <view class="tt" hover-class="none" hover-stop-propagation="false">{{item.account[0].mobile}}</view>
+            <view class="tb" hover-class="none" hover-stop-propagation="false">{{item.createTime}}</view>
           </view>
         </view>
         <view class="itemBottom" hover-class="none" hover-stop-propagation="false">
-          评论评论评论评论评论评论评论评论评论评论 评论评论评论评论评论评论评论评论评论
+          {{item.content}}
         </view>
       </view>
     </view>
   </view>
   <view class="send">
-    <input  type="text"  placeholder="请输入您对房源的评价"  placeholder-class="input-placeholder" disabled="{{false}}" maxlength="140"></input>
-    <view class="btn df" >在线咨询</view>
+    <input  type="text"   value='{{content}}'  bindinput='chooseContent' placeholder="请输入您对房源的评价"  placeholder-class="input-placeholder" disabled="{{false}}" maxlength="140"></input>
+    <view class="btn df" bindtap='send'>在线咨询</view>
   </view>
 </view>

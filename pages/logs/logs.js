@@ -36,20 +36,33 @@ Page({
     }
   },
   onShow() {
-    util._get('notice/page?sessionId='+wx.getStorageSync('sessionId')).then(res=>{
-      if(res.code == 1) {
-        console.log(res);
-        this.setData({
-          list:res.data.list
-        })
-      }
-    })
+
   },
   onLoad: function () {    
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
+    // this.setData({
+    //   logs: (wx.getStorageSync('logs') || []).map(log => {
+    //     return util.formatTime(new Date(log))
+    //   })
+    // })
+    if(wx.getStorageSync('sessionId')) {
+      util._get('notice/page?sessionId='+wx.getStorageSync('sessionId')).then(res=>{
+        if(res.code == 1) {
+          console.log(res);
+          this.setData({
+            list:res.data.list
+          })
+        }
       })
-    })
+    } else {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      })
+      setTimeout(() => {
+        wx.navigateTo({
+          url: '/pages/login/login'
+        })
+      }, 1600);
+    }
   }
 })

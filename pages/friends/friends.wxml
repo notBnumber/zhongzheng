@@ -12,7 +12,7 @@
         <view class="dian" hover-class="none" hover-stop-propagation="false"></view>
       </view>
       <view class="content" hover-class="none" hover-stop-propagation="false" wx:if="{{currentState == 1 || currentState == 2 }}">
-        <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{openList}}" bindtap='check' wx:key='{{index}}' data-index='{{item.id}}'>
+        <view class="item" hover-class="none" hover-stop-propagation="false" wx:for="{{openList}}" bindtap='check' wx:key='{{index}}' data-index='{{index}}'>
           {{item.value}}
         </view>
       </view>
@@ -50,7 +50,7 @@
         <view class="contentTop" hover-class="none" hover-stop-propagation="false">
           <scroll-view class="" scroll-y style="height: 803rpx;width:200rpx">
             <view class="left" hover-class="none" hover-stop-propagation="false">
-              <view class="leftItem" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuList}}" wx:key="{{index}}" data-index='{{index}}' bindtap='checkQuyu'>
+              <view class="leftItem" hover-class="none" hover-stop-propagation="false" wx:for="{{quyuList}}" wx:key="{{index}}" data-index='{{index}}' data-id='{{item.id}}' bindtap='checkQuyu'>
                 <view class="{{quyuIndex == index ?'active' :''}} items" hover-class="none" hover-stop-propagation="false">
                   {{item.name}}
                 </view>

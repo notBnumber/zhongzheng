@@ -36,7 +36,8 @@ Page({
     
     if (this.data.num == 60) {
       let params = {
-        mobile: this.data.phone
+        mobile: this.data.phone,
+        type:1
       };
       let that = this;
       util
@@ -106,34 +107,26 @@ Page({
     let that = this;
     let params = {
       mobile: this.data.phone,
-      code: this.data.code
+      code: this.data.code,
+      invitedCode:this.data.Invitation
     };
-    util._get("account/verify", params).then(res => {
+    util._get("account/login", params).then(res => {
+      console.log(res);
+      
       if (res.code == 1) {
-        let obj = {
-          mobile: that.data.phone,
-          code: that.data.code,
-          invitedCode: that.data.Invitation
-        };
-        util._get("account/login", obj).then(res => {
-          console.log(res);
-          
-          if (res.code == 1) {
-            wx.setStorageSync('sessionId', res.data.sessionId)
-            wx.setStorageSync('mobile', res.data.mobile)
+        wx.setStorageSync('sessionId', res.data.sessionId)
+        wx.setStorageSync('mobile', res.data.mobile)
 
-            
-            wx.showToast({
-              title: "登录成功",
-              icon: "success"
-            });
-            setTimeout(() => {
-              wx.navigateBack({
-                delta: 1
-              });
-            }, 2000);
-          }
+        
+        wx.showToast({
+          title: "登录成功",
+          icon: "success"
         });
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          });
+        }, 2000);
       }
     });
   },

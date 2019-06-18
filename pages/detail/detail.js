@@ -8,6 +8,7 @@ Page({
    */
   data: {
     params:{},
+    imgUrl:'',
     imgUrls: [
       "https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640",
       "https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640",
@@ -28,6 +29,51 @@ Page({
       // mianji:'70-90m²',
       // yongtu:'普通',
       // tese:'教育'
+    },
+    list:[],
+    options:'',
+    content :''
+  },
+  chooseContent(e) {
+    this.setData({
+      content:e.detail.value
+    })
+  },
+  send(e) {
+    if(this.data.content == '') {
+      wx.showToast({
+        title: '请输入评论内容',
+        icon: 'none'
+      })
+    } else {
+      let params = {
+        sessionId:wx.getStorageSync('sessionId'),
+        content:this.data.content,
+        type:this.options.type,
+        homeId:this.options.id
+      }
+      util._post('discuss/submitDiscuss',params).then(res=>{
+        if (res.code == 1) {
+          wx.showToast({
+            title: '评论成功',
+            icon: 'success'
+          })
+          this.setData({
+            content:''
+          })
+          this.chooseContent(e)
+          util._post("discuss/page?type="+this.data.options.type+'&homeId='+this.data.options.id+'&pageNumber=1&pageSize=999').then(res=>{
+            if(res.code ==1) {
+              this.setData({
+                list:res.data.list
+              })
+            }
+          })
+        
+  
+  
+        }
+      })
     }
   },
   shoucang() {
@@ -152,6 +198,9 @@ Page({
    */
   onLoad: function (options) {
     console.log(options);
+    this.setData({
+      options:options
+    })
     // let params = {
     //   type:options.type,
     //   homeId:options.id
@@ -167,27 +216,45 @@ Page({
     //     })
     //   }
     // })
-    this.setData({
-      params:options
-    })
-    Promise.all([
-      util._post("newhome/houseDetail?type="+options.type+'&homeId='+options.id),
-      util._post("newhome/getIsCollection?type="+options.type+'&homeId='+options.id+'&sessionId='+wx.getStorageSync('sessionId'))
-    ])
-      .then(result => {
-        console.log(result);
-        this.setData({
-          info:result[0].data,
-          isshoucang:result[1].data
-        });
+    if(wx.getStorageSync('sessionId')) {
+      this.setData({
+        params:options
       })
-      .catch(e => {
-        console.log(e);
-        this.setData({
-          info:{},
-
+      Promise.all([
+        util._post("newhome/houseDetail?type="+options.type+'&homeId='+options.id),
+        util._post("newhome/getIsCollection?type="+options.type+'&homeId='+options.id+'&sessionId='+wx.getStorageSync('sessionId')),
+        util._post("discuss/page?type="+options.type+'&homeId='+options.id+'&pageNumber=1&pageSize=999'),
+      ])
+        .then(result => {
+          console.log(result);
+          this.setData({
+            info:result[0].data,
+            isshoucang:result[1].data,
+            list:result[2].data.list,
+            imgUrl: app.globalData.imgUrl
+          });
         })
-      });
+        .catch(e => {
+          console.log(e);
+          this.setData({
+            info:{},
+  
+          })
+        });
+    } else {
+      wx.showToast({
+        title: '请先登录',
+        icon: 'none'
+      })
+      setTimeout(() => {
+        // wx({
+        //   url: '/pages/login/login'
+        // })
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
+      }, 1600);
+    }
   },
 
   /**
@@ -200,7 +267,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
 
   },
 
